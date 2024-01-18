@@ -355,9 +355,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>{html_document}
-&lt;html lang="en"&gt;
+&lt;html lang="en" manifest="manifest.appcache"&gt;
 [1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8 ...
-[2] &lt;body&gt;\n      &lt;div class="container"&gt;\n      &lt;div class="skipNav"&gt;\n      ...</code></pre>
+[2] &lt;body&gt;\r\n    &lt;div class="container"&gt;  \r\n        &lt;div class="skipNav"&gt;\ ...</code></pre>
 </div>
 </div>
 <p>If you’re running this code in R Studio, in our environment window at right, you’ll see results as a “list of 2”.</p>
@@ -390,23 +390,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 # A tibble: 25 × 5
-   Jurisdiction     Dan Cox and Gordana Schifanelli\r\…¹ Robin…² Kelly…³ Joe W…⁴
-   &lt;chr&gt;            &lt;chr&gt;                                &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  
- 1 Allegany         4,469                                399     2,259   99     
- 2 Anne Arundel     18,039                               711     18,581  513    
- 3 Baltimore City   1,771                                168     2,010   156    
- 4 Baltimore County 18,129                               842     18,247  649    
- 5 Calvert          6,081                                335     3,628   186    
- 6 Caroline         2,533                                49      1,409   39     
- 7 Carroll          10,462                               404     9,997   268    
- 8 Cecil            4,998                                203     3,487   128    
- 9 Charles          3,473                                176     1,709   127    
-10 Dorchester       2,475                                75      916     42     
-# … with 15 more rows, and abbreviated variable names
+   Jurisdiction     Dan Cox and Gordana Schifanelli\r\n…¹ Robin Ficker and LeR…²
+   &lt;chr&gt;            &lt;chr&gt;                                 &lt;chr&gt;                 
+ 1 Allegany         4,469                                 399                   
+ 2 Anne Arundel     18,039                                711                   
+ 3 Baltimore City   1,771                                 168                   
+ 4 Baltimore County 18,129                                842                   
+ 5 Calvert          6,081                                 335                   
+ 6 Caroline         2,533                                 49                    
+ 7 Carroll          10,462                                404                   
+ 8 Cecil            4,998                                 203                   
+ 9 Charles          3,473                                 176                   
+10 Dorchester       2,475                                 75                    
+# ℹ 15 more rows
+# ℹ abbreviated names:
 #   ¹​`Dan Cox and Gordana Schifanelli\r\n\r\n\r\nRepublican`,
-#   ²​`Robin Ficker and LeRoy F. Yegge, Jr.\r\n\r\n\r\nRepublican`,
-#   ³​`Kelly Schulz and Jeff Woolford\r\n\r\n\r\nRepublican`,
-#   ⁴​`Joe Werner and Minh Thanh Luong\r\n\r\n\r\nRepublican`</code></pre>
+#   ²​`Robin Ficker and LeRoy F. Yegge, Jr.\r\n\r\n\r\nRepublican`
+# ℹ 2 more variables:
+#   `Kelly Schulz and Jeff Woolford\r\n\r\n\r\nRepublican` &lt;chr&gt;,
+#   `Joe Werner and Minh Thanh Luong\r\n\r\n\r\nRepublican` &lt;chr&gt;</code></pre>
 </div>
 </div>
 <p>In the environment window at right, look at results Note that it’s now a “list of 1”.</p>
@@ -427,23 +429,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 25 × 5
-   Jurisdiction     Dan Cox and Gordana Schifanelli\r\…¹ Robin…² Kelly…³ Joe W…⁴
-   &lt;chr&gt;            &lt;chr&gt;                                &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  
- 1 Allegany         4,469                                399     2,259   99     
- 2 Anne Arundel     18,039                               711     18,581  513    
- 3 Baltimore City   1,771                                168     2,010   156    
- 4 Baltimore County 18,129                               842     18,247  649    
- 5 Calvert          6,081                                335     3,628   186    
- 6 Caroline         2,533                                49      1,409   39     
- 7 Carroll          10,462                               404     9,997   268    
- 8 Cecil            4,998                                203     3,487   128    
- 9 Charles          3,473                                176     1,709   127    
-10 Dorchester       2,475                                75      916     42     
-# … with 15 more rows, and abbreviated variable names
+   Jurisdiction     Dan Cox and Gordana Schifanelli\r\n…¹ Robin Ficker and LeR…²
+   &lt;chr&gt;            &lt;chr&gt;                                 &lt;chr&gt;                 
+ 1 Allegany         4,469                                 399                   
+ 2 Anne Arundel     18,039                                711                   
+ 3 Baltimore City   1,771                                 168                   
+ 4 Baltimore County 18,129                                842                   
+ 5 Calvert          6,081                                 335                   
+ 6 Caroline         2,533                                 49                    
+ 7 Carroll          10,462                                404                   
+ 8 Cecil            4,998                                 203                   
+ 9 Charles          3,473                                 176                   
+10 Dorchester       2,475                                 75                    
+# ℹ 15 more rows
+# ℹ abbreviated names:
 #   ¹​`Dan Cox and Gordana Schifanelli\r\n\r\n\r\nRepublican`,
-#   ²​`Robin Ficker and LeRoy F. Yegge, Jr.\r\n\r\n\r\nRepublican`,
-#   ³​`Kelly Schulz and Jeff Woolford\r\n\r\n\r\nRepublican`,
-#   ⁴​`Joe Werner and Minh Thanh Luong\r\n\r\n\r\nRepublican`</code></pre>
+#   ²​`Robin Ficker and LeRoy F. Yegge, Jr.\r\n\r\n\r\nRepublican`
+# ℹ 2 more variables:
+#   `Kelly Schulz and Jeff Woolford\r\n\r\n\r\nRepublican` &lt;chr&gt;,
+#   `Joe Werner and Minh Thanh Luong\r\n\r\n\r\nRepublican` &lt;chr&gt;</code></pre>
 </div>
 </div>
 <p>We now have a proper dataframe, albeit with some lengthy column headers.</p>
@@ -484,7 +488,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  8 Cecil             4998    203   3487    128
  9 Charles           3473    176   1709    127
 10 Dorchester        2475     75    916     42
-# … with 14 more rows</code></pre>
+# ℹ 14 more rows</code></pre>
 </div>
 </div>
 <p>And there we go. We now have a nice tidy dataframe of Maryland GOP gubernatorial primary results that we could ask some questions of.</p>
