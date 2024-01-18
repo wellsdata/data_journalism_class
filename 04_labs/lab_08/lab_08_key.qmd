@@ -1,0 +1,221 @@
+#lab_08
+Sean Mussenden, Aug 16, 2022
+
+## About this lab
+
+To complete this lab, you need to:
+* write code in empty codeblocks provided to answer questions included (look for **Q**).
+* write out the answer in the form of a complete sentence in the space given (look for **A**).
+
+When you are finished, commit changes and push to your personal GitHub repo, then submit the URL to this document on ELMS.
+
+## Load libraries and establish settings
+**Task**: Load janitor and the tidyverse
+```{r}
+# Turn off scientific notation
+options(scipen=999)
+
+# Load the tidyverse,janitor
+library(tidyverse)
+library(janitor)
+
+# Tidyverse
+
+library(tidycensus)
+census_api_key("549950d36c22ff16455fe196bbbd01d63cfbe6cf")
+
+```
+
+
+## Prep data (just for the key)
+
+```{r}
+
+x <- load_variables(2020,"acs5")
+
+###
+# Load county pop data
+###
+
+maryland_county <- get_acs(geography = "county", state="Maryland", variables = c( "B01001_001","B02001_002","B02001_003","B03001_003"), year = 2020) %>%
+  clean_names() %>%
+  select(geoid, name, variable, estimate) %>%
+  pivot_wider(names_from=variable, values_from=estimate) %>%
+  rename(total_pop = B01001_001,
+    white_pop = B02001_002,
+    black_pop = B02001_003,
+    hispanic_pop = B03001_003) 
+  
+###
+# Create tables for first question
+###
+
+# Create table with hispanic totals by county
+maryland_hispanic <- maryland_county %>%
+  select(geoid,name,hispanic_pop)
+
+# Create table with total pop by county
+maryland_population <- maryland_county %>%
+  select(geoid,name,total_pop)
+
+# Determine highest county for dirtying
+county_highest_hispanic_pop <- maryland_hispanic %>%
+  inner_join(maryland_population) %>%
+  mutate(pct_hisp = hispanic_pop/total_pop) %>%
+  arrange(desc(pct_hisp)) %>%
+  select(name) %>%
+  slice(1)
+
+# Store as variable
+county_highest_hispanic_pop <- county_highest_hispanic_pop$name
+
+# Update hispanic table with dirty county value -- replace ", " with "," (unless fixed will prevent join)
+maryland_hispanic <- maryland_hispanic %>%
+  mutate(name = case_when(
+    name == county_highest_hispanic_pop ~ str_replace(name, ", ", ","),
+    TRUE ~ name
+  ))
+
+write_csv(maryland_population, "data/maryland_population.csv")
+write_csv(maryland_hispanic,"data/maryland_hispanic.csv")
+
+###
+# Create tables for question 2 
+###
+
+# Dirty data by multiplying smallest white pop county by 1000X (larger than total maryland population)
+maryland_white <- maryland_county %>%
+  select(geoid,name,white_pop) %>%
+  mutate(white_pop = case_when(
+    white_pop == min(white_pop) ~ white_pop*1000,
+    TRUE ~ white_pop
+  ))
+
+write_csv(maryland_white,"data/maryland_white.csv")
+
+###
+# Create tables for question 3
+###
+
+# Dirty data by creating 
+maryland_black <- maryland_county %>%
+  select(geoid,name,black_pop) %>%
+  mutate(black_pop = as.character(black_pop)) %>%
+  # mutate(black_pop = "x")
+  mutate(black_pop = case_when(
+    str_detect(name,"Baltimore County") ~ as.character(NA),
+    str_detect(name, "Baltimore city") ~ as.character(NA),
+    TRUE ~ black_pop
+  ))
+
+# Write it out  
+write_csv(maryland_black,"data/maryland_black.csv")
+
+rm(list=ls())
+
+
+```
+
+## Load data
+
+**Task**: Load four tables of U.S. Census data.  Each table has one row per Maryland county with 2020 population information.  Each table has these same two columns:
+
+* geoid - a unique identifier for each county
+* name - the county name
+
+The third column in each table represents the total population in one of four demographic categories.
+
+* maryland_population.csv - total_pop - total population 
+* maryland_hispanic.csv - hispanic_pop - total Hispanic population
+* maryland_white.csv - white_pop - total White alone population
+* maryland_black.csv - black_pop - total Black alone population
+
+Some of the information in the tables may need to be cleaned or validated in order to produce the correct answer.  
+
+```{r}
+###
+# Total population
+###
+
+maryland_population <- read_csv("data/maryland_population.csv")
+
+###
+# Hispanic population
+###
+
+maryland_hispanic <- read_csv("data/maryland_hispanic.csv")
+
+###
+# White population
+###
+
+maryland_white <- read_csv("data/maryland_white.csv")
+
+###
+# Black population
+###
+
+maryland_black <- read_csv("data/maryland_black.csv")
+
+```
+
+## Questions
+
+**Q**  What Maryland county has the largest Hispanic population (by percentage of total population)? 
+**A**  Montgomery County, Maryland. If you failed to clean the Hispanic table for "Montgomery County,Maryland" to "Montgomery County, Maryland" (notice the space after the comma), it won't join properly.  In that case, if you got the rest of the function right, the (wrong) answer would be P.G.
+
+```{r}
+
+hispanic_percentage_df <- maryland_hispanic %>%
+  mutate(name = case_when(
+    name == "Montgomery County,Maryland" ~ "Montgomery County, Maryland",
+    TRUE ~ name
+  )) %>%
+  inner_join(maryland_population) %>%
+  mutate(pct_hispanic = hispanic_pop/total_pop) %>%
+  arrange(desc(pct_hispanic)) %>%
+  head(1)
+
+
+hispanic_percentage_df
+
+```
+
+**Q**  What is the total population of people who identify as white alone in Maryland? 
+**A**  If students do no cleaning when solving this, they'll get Maryland's total white population as 16,771,538.  That's nearly 3X the state's total population, and about 5X the real answer.  We're asking students to be skeptical about their results.  Somerset County's real white population value has been multiplied by 1000, something they will probably notice just by looking at table or by comparing the values in total population table. We should only tell them this IF they ask, though some may check this with web research. The real value for Somerset is 13,510 NOT 13,510,000.  If they fix the problematic value, the white population is 3.28 million.
+
+```{r}
+
+white_total_df <- maryland_white %>%
+  mutate(
+    white_pop = case_when(
+      name == "Somerset County, Maryland" ~ white_pop/1000,
+      TRUE ~ white_pop
+    )
+  ) %>%
+  summarise(
+    white_pop = sum(white_pop)
+  )
+
+white_total_df
+
+```
+
+**Q** What is the average Black population in all Maryland counties? 
+**A** The average Black population is 75,130.  If students fail to convert the column black_pop to numeric, it will error. If students try to calculate average by using mean(black_pop, na.rm=TRUE) without filling in values for Baltimore County and Baltimore city, they'll get 53,864.  The correct answer, after filling in values for Baltimore County (243098) and Baltimore city (375002) is 75,130. We should provide those values to them ONLY if they ask, though some may find with web research or by looking in prior labs.
+
+
+```{r}
+avg_black_population <- maryland_black %>%
+  mutate(black_pop = as.numeric(black_pop)) %>%
+  mutate(black_pop = case_when(
+    name == "Baltimore County, Maryland" ~ 243098,
+    name == "Baltimore city, Maryland" ~ 375002,
+    TRUE ~ black_pop
+  )) %>%
+  summarise(
+    avg_black_pop = mean(black_pop, na.rm=TRUE)
+  )
+
+avg_black_population
+```

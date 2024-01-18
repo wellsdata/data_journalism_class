@@ -1,0 +1,177 @@
+#lab_07 
+Sean Mussenden, Aug 16, 2022
+
+## About this lab
+
+To complete this lab, you need to:
+* write code in empty codeblocks provided to answer questions included (look for **Q**).
+* write out the answer in the form of a complete sentence in the space given (look for **A**).
+
+When you are finished, commit changes and push to your personal GitHub repo, then submit the URL to this document on ELMS.
+
+## Load libraries and establish settings
+**Task**: Load janitor and the tidyverse
+```{r}
+# Turn off scientific notation
+options(scipen=999)
+
+# Load the tidyverse,janitor
+library(tidyverse)
+library(janitor)
+```
+
+
+## Prep data (just for the key)
+```{r}
+
+###
+# Load ARCOS data
+###
+
+arcos <- read_rds("raw_data/arcos.rds") %>%
+  clean_names() %>%
+  select(countyfips, everything(), -count) %>%
+  rename(total_pills = dosage_unit) %>%
+  filter(!is.na(countyfips)) %>%
+  filter(!str_detect(countyfips,"02201|02280"))
+  
+write_csv(arcos,"data/arcos.csv")
+
+###
+# Load county pop data
+###
+
+# Tidyverse
+
+library(tidycensus)
+census_api_key("549950d36c22ff16455fe196bbbd01d63cfbe6cf")
+
+
+# State list
+state_names <- append(state.name,"DC")
+
+# Define function to get data
+get_county_pop <- function(state_name) {
+
+  county_population <- get_acs(geography = "county", state=state_name,
+              variables="B01001_001", year=2014, geometry = FALSE ) %>%
+    clean_names() %>%
+    select(geoid,county_name = name,total_population_2014 = estimate) %>%
+    mutate(state = state_name) %>%
+    select(geoid,state,county_name,total_population_2014)
+  
+}
+
+# Get data
+county_population_2014 <- map_dfr(state_names, get_county_pop)
+
+# Write it out  
+write_csv(county_population_2014,"data/county_population_2014.csv")
+
+###
+# Load state pop data
+###
+
+get_state_pop <- function(state_name) {
+
+  state_population <- get_acs(geography = "state", state=state_name,
+              variables="B01001_001", year=2014, geometry = FALSE ) %>%
+    clean_names() %>%
+    select(geoid,state_name = name,total_population_2014 = estimate) %>%
+    mutate(state = state_name) %>%
+    select(geoid,state,total_population_2014)
+  
+}
+
+state_population_2014 <- map_dfr(state_names, get_state_pop)
+  
+write_csv(state_population_2014,"data/state_population_2014.csv")
+
+###
+# Load state crosswalk
+###
+
+state_name <- append(state.name,"Washington, DC") %>%
+  as_tibble() %>%
+  rename(state_name = value)
+  
+state_abb <- append(state.abb,"DC") %>%
+  as_tibble() %>%
+  rename(state_abb = value)  
+
+state_crosswalk <- state_abb %>%
+  bind_cols(state_name)
+
+state.name
+
+write_csv(state_crosswalk,"data/state_crosswalk.csv")
+
+```
+
+## Load data
+
+For today's lab, we are using the DEA's ARCOS database, which tracks shipments of opioids and other controlled substances from manufacturers to pharmacies.  As we will read this week, the Washington Post used this data to show which communities were flooded by opioids during the death and overdose crisis of the last two decades. 
+
+There are four tables in the data folder. 
+
+* arcos.csv has the total number of opioid pills shipped to pharmacies located in each U.S. county each year (from 2006-2014). Each row represents one county in one year during that period. In some states, counties and cities are represented. You will need this for both questions.
+* county_population_2014.csv has the total population of each U.S. county (or city in some states) in 2014 from the American Community Survey. You will need to use this for the first question.
+* state_population_2014.csv has the total population of each U.S. state in 2014 from the American Community Survey. You will need to use this for the second question.
+* state_crosswalk.csv is a simple dataframe with two columns listing the state and its abbreviation.  You may need to use this for the second question.
+
+**Task**: Create a codeblock and load the two dataframes using appropriate names.
+
+```{r}
+
+arcos <- read_csv("data/arcos.csv")
+
+county_population_2014 <- read_csv("data/county_population_2014.csv")
+
+
+state_population_2014 <- read_csv("data/state_population_2014.csv")
+
+```
+
+**Q1** Which county or city received the most total opioid pills per person? Add up all the pills between 2006 and 2014 when doing this calculation. How many total pills, and what was the per person rate?
+**A1** Manufacturers shipped more than 10 million opioid pills to Norton, Virginia between 2006 and 2014. That represented 2629 opioid pills for every person who lived in the city, a higher rate than anywhere else in the U.S. 
+
+```{r}
+
+arcos_county <- arcos %>%
+  group_by(countyfips,buyer_county,buyer_state) %>%
+  summarise(
+    total_pills = sum(total_pills)
+  ) %>%
+ inner_join(county_population_2014, by=c("countyfips"="geoid")) %>%
+ mutate(pills_per_person = total_pills/total_population_2014) %>%
+ arrange(desc(pills_per_person))
+  
+arcos_county
+```
+
+**Q2** Which U.S. state had the highest number of opioid pills per person for pills shipped in 2014? How many total pills, and what was the per person rate? How did that compare to Washington, D.C.
+**A2** Manufacturers shipped more than 120 million opioid pills to West Virginia in 2014. That represented 65 opioid pills for every person who lived in the state, a higher rate than anywhere else in the U.S. Washington, D.C. was the lowest with 13.5 pills per person.
+
+
+```{r}
+
+arcos_state <- arcos %>%
+  filter(year == 2014) %>%
+  group_by(buyer_state) %>%
+  summarise(
+    total_pills=sum(total_pills)
+    ) %>%
+  left_join(state_crosswalk, by=c("buyer_state" = "state_abb")) %>%
+  mutate(state_name = case_when(
+    state_name == "Washington, DC" ~ "District of Columbia",
+    TRUE ~ state_name
+  )) %>%
+  left_join(state_population_2014,by=c("state_name" = "state")) %>%
+  mutate(pills_per_person = total_pills/total_population_2014) %>%
+  arrange(desc(pills_per_person))
+  
+arcos_state
+
+```
+
+**Q3** Write a sentence that could be dropped in as the lede of a news story from the finding in question two. 

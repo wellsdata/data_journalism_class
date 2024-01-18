@@ -1,0 +1,167 @@
+#lab_08
+Sean Mussenden, Aug 16, 2022
+
+## About this lab
+
+To complete this lab, you need to:
+* write code in empty codeblocks provided to answer questions included (look for **Q**).
+* write out the answer in the form of a complete sentence in the space given (look for **A**).
+
+When you are finished, commit changes and push to your personal GitHub repo, then submit the URL to this document on ELMS.
+
+## Load libraries and establish settings
+**Task**: Load janitor and the tidyverse and sf
+
+```{r}
+library(tidyverse)
+library(janitor)
+library(sf)
+
+```
+
+## Prepare data
+
+```{r}
+
+###
+# Load dataframe of baltimore homicides
+###
+
+baltimore_homicides <- read_csv("https://raw.githubusercontent.com/washingtonpost/data-homicides/master/homicide-data.csv") %>%
+  filter(city == "Baltimore") %>%
+  st_as_sf(
+    coords = c("lon","lat"),
+    crs="NAD83"
+  )
+
+write_rds(baltimore_homicides,"data/baltimore_homicides.rds")
+
+###
+# Load dataframe of Baltimore demographics
+###
+library(tidycensus)
+census_api_key("549950d36c22ff16455fe196bbbd01d63cfbe6cf")
+
+baltimore_tract_demographics <- get_acs(geography = "tract", state="Maryland", variables = c( "B01001_001","B02001_002"), year = 2017) %>%
+  clean_names() %>%
+  select(geoid, name, variable, estimate) %>%
+  pivot_wider(names_from=variable, values_from=estimate) %>%
+  rename(total_pop = B01001_001,
+    white_pop = B02001_002
+    ) %>%
+  filter(str_detect(name,"Baltimore city"))
+
+write_rds(baltimore_tract_demographics,"data/baltimore_tract_demographics.rds")
+
+###
+# Load Baltimore tract shapefiles
+###
+
+baltimore_tract_shapefiles <- get_acs(geography = "tract", state="Maryland", variables = c( "B01001_001"), year = 2017, geometry = TRUE) %>%
+  clean_names() %>%
+  select(geoid,name,geometry) %>%
+  filter(str_detect(name,"Baltimore city"))
+
+write_rds(baltimore_tract_shapefiles,"data/baltimore_tract_shapefiles.rds")
+
+
+```
+
+## Load data
+
+You have been given two spatial dataframes and one regular dataframe to load.  The dataframes are:
+
+* baltimore_homicides.rds | spatial | location and details about each Baltimore homicide between 2007 and 2017, including information about the status (open, closed with arrest, closed without arrest) and the exact location. Details on the data: https://github.com/washingtonpost/data-homicides
+* baltimore_tract_shapefiles.rds | spatial | polygons of each census tract in Baltimore
+* baltimore_tract_demographics.rds | regular | the total population and white population of each baltimore Census tract in 2017.
+
+
+```{r}
+
+baltimore_homicides <- read_rds("data/baltimore_homicides.rds")
+baltimore_tract_demographics <- read_rds("data/baltimore_tract_demographics.rds")
+baltimore_tract_shapefiles <- read_rds("data/baltimore_tract_shapefiles.rds")
+
+
+```
+
+
+## Questions
+
+**Q1** Are homicides that occur in majority white Census tracts in Baltimore solved at a higher rate than homicides in non-majority white Baltimore census tracts?
+* Write up your findings in three paragraphs that could be dropped into a news story, with the answer to the question as the lede. 
+* Include any other relevant details.
+* Output a table with relevant results. 
+* Output at least one map visualization pertinent to your finding. 
+
+**A1** 
+
+Homicides in Baltimore city are solved at significantly higher rate in majority white neighborhoods than homicides elsewhere in the city, a new analysis of Washington Post data shows. 
+
+In majority white neighborhoods, police had not solved 46 percent of killings between 2007 and 2017, compared with 66 percent in non-white neighborhoods. There were more than 10 times as many killings in non-majority white neighborhoods over that period, 2588, compared with 239 in majority white neighborhoods.
+
+```{r}
+
+###
+# Classify each tract as majority white or not
+###
+
+majority_white_tracts <- baltimore_tract_demographics %>%
+  mutate(pct_white = white_pop/total_pop) %>%
+  select(geoid,name,pct_white) %>%
+  mutate(neighborhood_type = case_when(
+    pct_white > .50 ~ "majority_white",
+    TRUE ~ "not_majority_white"
+  ))
+
+###
+# Connect classified neighborhood file to spatial data
+###
+
+majority_white_tracts <- majority_white_tracts %>%
+  inner_join(baltimore_tract_shapefiles) %>%
+  st_as_sf()
+
+###
+# Spatial join to assign each shooting to a tract
+###
+
+shootings_by_neighborhood <- baltimore_homicides %>%
+  st_join(majority_white_tracts) %>%
+  as_tibble()
+
+###
+# Calculate the percentage of unsolved homicides in white and non-white neighborhoods
+###
+
+case_status_by_neighborhood <- shootings_by_neighborhood %>%
+  group_by(neighborhood_type,disposition) %>%
+  count() %>%
+  pivot_wider(names_from=disposition, values_from=n) %>%
+  clean_names() %>%
+  mutate(total_shootings = closed_by_arrest+closed_without_arrest+open_no_arrest) %>%
+  mutate(unsolved = open_no_arrest + closed_without_arrest) %>%
+  mutate(pct_unsolved = unsolved/total_shootings*100)
+
+case_status_by_neighborhood
+
+###
+# Output map
+###
+ggplot() +
+  geom_sf(data=baltimore_tract_shapefiles) +
+  geom_sf(data=baltimore_homicides)
+
+
+```
+
+```{r}
+
+
+
+
+```
+
+
+```
+

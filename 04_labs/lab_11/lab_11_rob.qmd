@@ -1,0 +1,168 @@
+#lab_11
+Sean Mussenden, Aug 16, 2022
+
+## About this lab
+
+To complete this lab, you need to:
+* write code in empty codeblocks provided to answer questions included (look for **Q**).
+* write out the answer in the form of a complete sentence in the space given (look for **A**).
+
+When you are finished, commit changes and push to your personal GitHub repo, then submit the URL to this document on ELMS.
+
+## Overview
+
+There are three main goals of this lab:
+
+* learn to make use of R packages that can access data via third-party APIs.
+* learn to develop a quick and accurate understanding of what data can be obtained via third-party APIs. 
+* learn to develop questions that can be answered using that data, and avoid developing questions that cannot. 
+
+## APIs to choose from
+
+You can pick from one of two API packages to work with today. 
+
+* spotifyR - for loading data about artist songs and albums.
+* tidycensus - for asking census-related questions.
+
+## Load libraries
+
+**Task**: load the tidyverse and janitor.  Uncomment the one other package you plan to work with.  Do not choose more than one API package.
+
+```{r}
+library(tidyverse)
+library(janitor)
+
+###
+# Spotify API package
+###
+
+# install.packages('spotifyr')
+# library(spotifyr)
+
+###
+# tidycensus
+###
+
+# library(tidycensus)
+
+```
+
+## Get setup to access third-party APIs
+
+### tidycensus
+
+Use the U.S. census access token you created for this week's lab.  You can store it by editing the block below to replace 'YOUR KEY HERE' with your actual key, a long string of letters and numbers. If you need to sign up for another one, you can do so here:  [apply for an API key with the Census Bureau](https://api.census.gov/data/key_signup.html). 
+
+```{r}
+census_api_key("YOUR KEY HERE", install=TRUE)
+```
+
+### spotifyR
+
+Getting a key to use the Spotify api is a tiny bit more complicated than the tidycensus, but should still only take one minute max. Do this:
+
+1.Go to the [Spotify Developer dashboard.](https://developer.spotify.com/dashboard/)
+2. Log in with your Spotify account.  If you don't have one, create a free account. 
+3. After logging in, click the big green "create an account" button.
+4. In the popup window that appears after clicking the button, do the following:
+  * Under 'App name', put "for data analysis".
+  * Under 'App description' put "doing some data analysis".
+  * Check the "I understand" check box.
+  * Hit the "create" button.
+5. On the next page:
+  * Hit "show client secret" to expose your 'Secret Key'.
+  * Copy the Client ID value (a long string of letters and numbers).  Paste it into the XXXXXXXXXXXXXXXXXXXXXXXXX in the first line of code in the block below.
+  * Copy the Client Secret value (a long string of letters and numbers). Paste it into the XXXXXXXXXXXXXXXXXXXXXXXXX in the second line of code in the block below. 
+  * It's important that you put the correct key into the right place, so pay attention to where you're pasting the Client ID and where you're storing the Client Secret.  
+6. Run the codeblock below to store your keys for later use. 
+
+```{r}
+
+###
+# Store your passwords to access the spotify api
+###
+
+Sys.setenv(SPOTIFY_CLIENT_ID = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
+Sys.setenv(SPOTIFY_CLIENT_SECRET = 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
+
+```
+
+## Get a sense of what's possible
+
+The documentation pages for each package are a good way to get an understanding of what data is accessbile and what is not. When using APIs to access data, it's important to ask for data in the way the API requires. Different functions will allow you to pull different kinds of data from different endpoints. 
+
+### spotifyR
+
+This package is designed to help you pull information from Spotify about artist songs, albums and musical features of those songs (like tempo, danceability, length). 
+
+* GitHub page https://github.com/charlie86/spotifyr
+* Functions to pull data: https://www.rcharlie.com/spotifyr/reference/index.html
+* Recipes: https://www.rcharlie.com/spotifyr/
+
+Though some of the functions in this package will allow you to pull your own listening data from Spotify, getting this to work properly is HARD.  I'd recommend sticking to the function  `get_artist_discography`, which allows you to pull a dataframe of every artists' song, one row-per-song, with information about each song. 
+
+Sample questions: have Taylor Swift's songs gotten longer as she's aged?  Are they more or less danceable today than they were five years ago?
+
+```{r}
+
+###
+# Set artist
+###
+
+artist <- "taylor swift"
+
+
+###
+# Get artist discography
+###
+
+taylor_swift_discography <- get_discography(artist, get_spotify_access_token())
+
+###
+# Write it out because it takes a while to load
+###
+
+write_rds(taylor_swift_discography,"data/taylor_swift_discography.rds")
+
+# Note if API doesn't work, a copy of taylor swift discography is in the data folder for loading.
+
+```
+
+### tidycensus
+
+This package is designed to help you pull demographic information about different U.S. geographies.
+
+* Basic usage https://walker-data.com/tidycensus/articles/basic-usage.html
+* Functions: https://walker-data.com/tidycensus/reference/index.html
+* More details https://walker-data.com/tidycensus/
+
+Sample question: which state saw the largest growth in Hispanic population between 2010 and 2020?
+
+```{r}
+
+###
+# Load ACS variables
+###
+
+acs_vars <- load_variables("acs5")
+
+###
+# Get median household income for Maryland 2020
+###
+
+md <- get_acs(geography = "county",
+              variables = c(median_income = "B19013_001"),
+              state = "MD",
+              year = 2020) 
+
+
+```
+
+### Develop and answer questions
+
+**Task** Pick one API to work with. 
+
+**Task** Develop two different *interesting* questions that you can answer with the data. Run them by your professor before getting started on answering, to ensure they're sufficiently interesting and possible with the data. 
+
+**Task** Write code to answer the questions.  Write up a sentence with each of your findings. Produce at least one visualization to support one of your findings. 
+

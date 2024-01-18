@@ -1,0 +1,39 @@
+#lab_07 
+Sean Mussenden, Aug 16, 2022
+
+## About this lab
+
+To complete this lab, you need to:
+* write code in empty codeblocks provided to answer questions included (look for **Q**).
+* write out the answer in the form of a complete sentence in the space given (look for **A**).
+
+When you are finished, commit changes and push to your personal GitHub repo, then submit the URL to this document on ELMS.
+
+## Load libraries and establish settings
+**Task**: Load janitor and the tidyverse
+```{r}
+# Turn off scientific notation
+options(scipen=999)
+
+# Load the tidyverse,janitor
+library(tidyverse)
+library(janitor)
+```
+
+## Questions
+
+**Q**  What Maryland county has the largest Hispanic population as measured by percentage of total county population? What is that percentage?  The Hispanic population is stored in maryland_county_hispanic_population.rds. The total population is stored in maryland_county_population.rds. 
+**A**
+* Issue: inconsistent values in county column requiring case when cleaning so that the tables join properly. 
+* Uses: mutate, case_when, joins, arrange
+
+**Q**  What is the total Maryland population? Use the table maryland_county_population_2 for this calculation.
+**A**
+* Issue: PG county will have been artificially inflated to move the decimal place three zeros, making the total artificially high by 1000X.  If students ask, we give them the correct value for cleaning. 
+* Uses: mutate, case_when, group and summarize
+
+**Q** What is the average Black population in all Maryland counties? Use maryland_county_black_popultion.rds. 
+**A**
+* Issue: NA values for Baltimore city.  If students calculate without getting those values, they'll get the wrong answer. If they ask, we provide the answer, or they can look it up and clean.
+**Uses: mutate, case_when, summarize.
+

@@ -1,1 +1,2 @@
-# data_journalism_class
+# data_journalism_interactive_textbook
+This is a textbook used for teaching data journalism to undergraduate and graduate students, updated for 2024.  It includes tutorials, exercises, labs, contextual readings, major project descriptions and other materials.  This repository builds on work by Sarah Cohen (ASU), Sean Mussenden (UMD), Rob Wells (UMD) and Derek Willis (UMD).  (https://github.com/smussenden/data_journalism_interactive_textbook). It is designed to be taught in 14 weeks. It largely teaches data journalism using R.
