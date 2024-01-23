@@ -4,13 +4,13 @@
 
 ### About this lab
 
-To complete this lab, you need to: Perform the assigned tasks as directed (look for **Task**). 
+To complete this lab, you need to: Perform the assigned tasks as directed (look for **Task**).
 
-- #1 Create a Google Sheet, load the assigned data, and answer the questions. 
+-   #1 Create a Google Sheet, load the assigned data, and answer the questions.
 
-- #2 When you are finished, open the share settings on the Doc and Sheets, allow the instructor access, copy the URL and paste it into the submisssion box.
+-   #2 When you are finished, open the share settings on the Doc and Sheets, allow the instructor access, copy the URL and paste it into the submisssion box.
 
-**Task** 
+**Task**
 
 ### Spreadsheet Exercise #1
 
@@ -49,4 +49,3 @@ Using the Baltimore City household median income data, answer these questions:
 When you are finished, open the share settings, allow the instructor access, copy the URL and paste it into the submisssion box in Elms, like this:
 
 ![](share_sheets.gif){width="100%"}
-
