@@ -46,11 +46,9 @@ It's a good example set for us because it's been used as the basis of many stori
 
 ## Get the data into Google Sheets
 
--   Download the \[police shooting data from the Washington Post\](https://github.com/washingtonpost/data-police-shootings/releases/download/v0.1/fatal-police-shootings-data.csv
+-   Download the [police shooting data from the Washington Post](https://github.com/washingtonpost/data-police-shootings/releases/download/v0.1/fatal-police-shootings-data.csv)
 
 -   Open Google Sheets. File \| Import \| Upload \| Select the downloaded file "fatal-police-shootings-data.csv" . After it uploads, select the green "Import Data" button.
-
--   
 
 ## Understanding data types
 
@@ -107,21 +105,19 @@ Filtering means picking out only some of the rows you want to see based on a cri
 To activate filters in Google Sheets, from the Menu:
 
 -   Data \| Filter Views \| Create a New Filter View
--   You'll see little triangles next to the column headings. 
+-   You'll see little triangles next to the column headings.
 
 Click the "armed" heading. You will see options for various weapons. All are selected by default with a check mark. To select just "ax", click on clear and then select "ax." The sheet how is filtered to just weapons using an ax. To remove the filter, repeat the steps and "select all" and the entire sheet is displayed again.
 
- Each filter you select adds more conditions, narrowing your net.
+Each filter you select adds more conditions, narrowing your net.
 
-To find fatalities that involved a firearm with a Taser, use the drop-down menu under `manner_of_death` select "shot and Tasered". 
+To find fatalities that involved a firearm with a Taser, use the drop-down menu under `manner_of_death` select "shot and Tasered".
 
 ```{r filtering_sheets_gif, out.width="100%", echo=FALSE}
 
 if (knitr::is_html_output())  knitr::include_graphics("assets/filtering_Sheets.gif")  
 #![](assets/filtering_Sheets.gif){width="360px"}{height="251px"}
 ```
-
-
 
 This method works for small-ish and simple-ish columns. If your column has more than 10,000 different entries, such as names or addresses, only the first 10,000 will be considered. We only caught these for stories when someone did a fact-check using a different method of filtering. If your column has a lot of distinct entries, use option that says "Choose One", and then use the "Contains" option. Better yet, don't use filtering for counting things at all.
 
@@ -133,19 +129,14 @@ Add more filters to narrow down your list of cases even more. For example, the N
 
 (Of course, the Times didn't stop there in trying to find more cases and teasing out more of them from this and other data. But this is a start. )
 
-
 ```{r filtering_sheets_gif_2, out.width="100%", echo=FALSE}
 
 if (knitr::is_html_output())  knitr::include_graphics("assets/double_filter_SHEETS.gif")  
 #![](assets/double_filter_Sheets.gif)
 ```
 
-
-
 #### Different kinds of filters {.unnumbered}
 
 There are several filter options. You can filter by various conditions. For numerical data, you can set a minimum or maximum value or a range of values. This is useful for dates to specify a certain time period. For text, you can filter if a word contains a few letters, useful to capture spelling variations.
 
 ![](assets/filter_conditions_sheets.png){width="100%"}
-
-  

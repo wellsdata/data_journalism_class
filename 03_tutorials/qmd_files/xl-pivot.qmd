@@ -36,15 +36,16 @@ In practice, you'll go back and forth between summary and detail. They're both i
 
 ::: {.alert .alert-info .opacity-2}
 We will continue to use [data from the Washington Post police shootings database](https://github.com/washingtonpost/data-police-shootings/releases/download/v0.1/fatal-police-shootings-data.csv) for this tutorial.
+:::
 
 First, let's modify this spreadsheet to include the descriptions of race and ethnicities: A for Asian, B for Black, etc.
 
--  Select Column I, city, and insert a new column to the left. Name it race_ethicity
--  Create a filter. Select race, filter for A
--  Type Asian in Column I. Copy Asian down the entire column so every A in column H corresponds with Asian in Column I
--  Repeat: B = Black. H = Hispanic. W = White, non-Hispanic, N= Native American, O=Other, blanks=Unknown.
+-   Select Column I, city, and insert a new column to the left. Name it race_ethicity
+-   Create a filter. Select race, filter for A
+-   Type Asian in Column I. Copy Asian down the entire column so every A in column H corresponds with Asian in Column I
+-   Repeat: B = Black. H = Hispanic. W = White, non-Hispanic, N= Native American, O=Other, blanks=Unknown.
 
-Follow [this video](https://youtu.be/jF_PYlnRUHo) to see the process. 
+Follow [this video](https://youtu.be/jF_PYlnRUHo) to see the process.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/jF_PYlnRUHo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 
@@ -72,9 +73,8 @@ We're totalling on state because it's good to have something that's always fille
 
 It's hard to compare raw numbers unless they're really small. Instead, we'd like to know what *percent* of fatalities by ethnicity. To get a "Percent of Column total", do the following:
 
--  Add a second values, select state
--  Under Show as, select "% of grand total"
-
+-   Add a second values, select state
+-   Under Show as, select "% of grand total"
 
 ![](assets/xl_pivot_pct_total_sheets.png){width="100%"}
 
@@ -82,8 +82,8 @@ It's hard to compare raw numbers unless they're really small. Instead, we'd like
 
 Suppose you'd like to see the number of fatalities by year, with the years across the top and the `ethnicity` down the sides. Add a year variable to columns
 
--  Remove the percent of total column
--  Select Columns, then year
+-   Remove the percent of total column
+-   Select Columns, then year
 
 ![](assets/xl-pivot-twovariables_sheets.png){width="100%"}
 
@@ -93,10 +93,10 @@ Say you wanted to see each city's total shootings by year. Which one had the mos
 
 This is actually really hard in a pivot table, because there are cities with the same names in different states. It means you'd need to have a pivot table with TWO columns down the side, and one across the top. Here's an attempt at solving the problems:
 
--  First, Rows, add state
--  Rows, add city
--  Values, add state, CountA is the default
--  Columns, add year
+-   First, Rows, add state
+-   Rows, add city
+-   Values, add state, CountA is the default
+-   Columns, add year
 
 ![More Variables!](assets/xl-pivot-morevairable_sheets.png){width="100%"}
 
