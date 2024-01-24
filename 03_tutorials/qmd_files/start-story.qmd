@@ -57,7 +57,7 @@ You'll get better at reading investigations and data-driven work over time, but 
 As journalists we'll often be using data, social science methods and even interviewing differently than true experts. We're seeking stories, not studies. Recognizing news in data is one of the hardest skills for less experienced reporters new to data journalism. This list of potential newsworthy data points is adapted from Paul Bradshaw's "[Data Journalism Heist](https://leanpub.com/DataJournalismHeist)".
 
 ::: {.image-wrapper .float-right .col-md-5}
-![](images/start-story-heist.png){width="90%"}
+![](images/start-story-heist.png){width="50%" height="auto"}
 :::
 
 -   Compare the claims of powerful people and institutions against facts -- the classic investigative approach.
@@ -69,5 +69,3 @@ As journalists we'll often be using data, social science methods and even interv
 -   Find data suggesting your area is *the same* or *different* than most others of its kind.
 
 Bradshaw also did a recent study of data journalism pieces: "[Here are the angles journalists use most often to tell the stories in data](https://onlinejournalismblog.com/2020/08/11/here-are-the-7-types-of-stories-most-often-found-in-data/)", in Online Journalism Blog. I'm not sure I agree, only because he's looking mainly at visualizations rather than stories, but they're worth considering.
-
-
