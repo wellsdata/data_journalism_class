@@ -17,7 +17,7 @@ In working with typical newsroom math, you will need to learn how to:
 -   Routinely compute averages, differences and rates
 -   Simplify and select the right numbers for your story
 
-While this chapter covers general tips, you can find specific instructions for typical newsroom math in this [Appendix A](appendix-math), an except from Sarah Cohen's outstanding book, [Numbers in the Newsroom](https://www.amazon.com/Numbers-newsroom-Using-math-statistics/dp/B0006E8VEC). It's worth getting your own copy if you don't already have one.
+While this chapter covers general tips, you can find specific instructions for typical newsroom math in this [Appendix A](appendix-math), an except from Sarah Cohen's outstanding book, [Numbers in the Newsroom](https://www.ire.org/product/numbers-in-the-newsroom-using-math-and-statistics-in-news-second-edition-e-version/). 
 
 ## Overcoming your fear of math
 
