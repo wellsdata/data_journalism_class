@@ -4,8 +4,8 @@ project:
 book:
   title: "Data Journalism with R and the Tidyverse"
   subtitle: "Spring 2024, Jour 472/772, Philip Merrill College of Journalism"
-  author: "By Sean Mussenden, Rob Wells and Derek Willis Original authors: Matt Waite & Sarah Cohen"
-  date: "12/19/2023"
+  author: "By Sean Mussenden, Rob Wells and Derek Willis. Contributors: Matt Waite & Sarah Cohen"
+  date: "1/24/2024"
   chapters:
      - index.qmd
      - start-story.qmd
