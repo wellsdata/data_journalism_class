@@ -61,11 +61,11 @@ The areas of the spreadsheet have different visual clues, and learning to read t
 
 This image shows some key areas on the screen when you're just viewing the sheet:
 
-![ready](assets/images/xl-refresher-SHEETS_screen.png){height="120%"}
+![Read the Screen](assets/images/xl-refresher-SHEETS_screen.png){width="100%"}
 
 This is how it changes when you're editing
 
-![editing](assets/images/xl-refresher-SHEETS_screen2.png){width="100%"}
+![Editing](assets/images/xl-refresher-SHEETS_screen2.png){width="100%"}
 
 ### Entering data {.unnumbered}
 
