@@ -10,7 +10,7 @@ Congressional lawmakers look at the ACS data to determine distribution of federa
 
 Here's something important to know about ACS results: Data are pooled across a calendar year. So the ACS numbers reflect data collected over a period of time. By contrast, the Decennial Census is a single point-in-time count of the population.
 
-We will be using ACS data to examine trends in wealth in Baltimore neighborhoods because this survey provides detail not available yet in the Decennial Census.
+We will be using ACS data to examine trends in wealth and social issues in Baltimore neighborhoods because this survey provides detail not available yet in the Decennial Census.
 
 You can access Census Data through multiple ways. The U.S. Census Bureau offers [data.census.gov](https://data.census.gov/cedsci/). Using this site requires some training and patience. Here is a good place to start, a [presentation the Census Bureau staff made](https://docs.google.com/presentation/d/1dUtT512SBa3FcVUPaBFwvLi2LaAwEFee/edit?usp=sharing&ouid=102324743793755798467&rtpof=true&sd=true) to the Investigative Reporters and Editors conference in 2019.
 
