@@ -10,7 +10,7 @@ The skills you will learn in the coming weeks are in high demand in journalism a
 
 **"You should have a strong command of at least one toolset that (a) allows for filtering, joining, pivoting, and aggregating tabular data, and (b) enables reproducible workflows."**
 
-You will learn these skills in this book. You'll get a taste of modern data journalism through Google Sheets and programming in R, a statistics language. You'll be challenged to think programmatically while thinking about a story you can tell to readers in a way that they'll want to read. Combining them together has the power to change policy, expose injustice and deeply inform.
+You will learn these skills in this book. You'll get a taste of modern data journalism through Google Sheets and programming in R, a statistics language. You'll be challenged to think programmatically while thinking about a story you can tell to readers in a way that they'll want to read. Combining them together has the power to change policy and expose injustice.
 
 ## Installations
 
@@ -30,7 +30,7 @@ That is code that you'll need to run common software packages in your R Studio.
 
 ## About this book
 
-This book is the collection of class materials compiled by various data journalism professors around the country: Matt Waite at the University of Nebraska-Lincoln's College of Journalism and Mass Communications and Sarah Cohen of Arizona State University. This version was edited by Derek Willis, Sean Mussenden and Rob Wells at the University of Maryland Philip Merrill College of Journalism.
+This book is the collection of class materials compiled by various data journalism professors around the country: Matt Waite at the University of Nebraska-Lincoln's College of Journalism and Mass Communications and Sarah Cohen of Arizona State University. This version was rewritten by Rob Wells, building on work by Sean Mussenden and Derek Willis, at the University of Maryland Philip Merrill College of Journalism.
 
 There's some things you should know about it:
 
