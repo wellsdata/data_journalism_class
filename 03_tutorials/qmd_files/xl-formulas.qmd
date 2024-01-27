@@ -6,7 +6,7 @@ The quick review of math in Google Sheets uses the City of Baltimore's 2022 budg
 Get the [Google Sheet](https://docs.google.com/spreadsheets/d/1IR86EPwC8pjkRPYmjpavvyywShbucRpseYEk9xddXcU/edit?usp=sharing) to follow along
 :::
 
-You should get into the habit of creating unique identifiers, checking your corners and looking for documentation before you ever start working with a spreadsheet. These habits were covered in [Replication and the data diary](replication_data_diary.html) and on [an Excel refresher](xl-refresher.html) .
+You should get into the habit of creating unique identifiers, checking your corners and looking for documentation before you ever start working with a spreadsheet. These habits were covered in replication and the data diary and on an Excel refresher.
 
 ## Formulas in spreadsheets
 

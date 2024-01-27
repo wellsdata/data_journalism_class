@@ -52,7 +52,7 @@ It's a good example set for us because it's been used as the basis of many stori
 
 ## Understanding data types
 
-When you open the spreadsheet, the first thing to notice is its [*granularity*](start-data-def.html). Unlike Census or budget spreadsheets, this is a list capturing specific characteristics of each fatality Each column has the same *type* of data from top to bottom. Those types are:
+When you open the spreadsheet, the first thing to notice is its *granularity*. Unlike Census or budget spreadsheets, this is a list capturing specific characteristics of each fatality Each column has the same *type* of data from top to bottom. Those types are:
 
 -   **Text**. Text or "character" columns can come in long or short form. When they are standardized (the values can contain only one of a small list of values), they're called "categorical". If they're more free-form, they're might be called "free text". The computer doesn't know the difference, but you should. The Post data has examples of both. In spreadsheets, text is left-justified (they move toward the left of the cell and will line up vertically at the beginning)
 
