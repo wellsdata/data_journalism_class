@@ -282,12 +282,12 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <p>This chapter will demonstrate some of the bedrock data cleaning skills using Google Sheets, techniques that can be used in Excel and other spreadsheets. We will normalize and clean data by deleting rows, stripping whitespace, making characters lowercase or uppercase. In addition, you will learn to split text to columns, a very handy tool for splitting up dates.</p>
-<p>Make a copy of your data before cleaning)</p>
 <p>We will use a version of the Washington Post <a href="https://docs.google.com/spreadsheets/d/13RohaTGgnUhxw5KMKT_BhZe45QQDz62gYbagwoztpLk/edit?usp=sharing">police shooting data</a> to conduct these exercises.</p>
+<p><strong>Make a copy</strong> of your data before cleaning!</p>
 <section id="text-to-columns" class="level3" data-number="10.0.1">
 <h3 data-number="10.0.1" class="anchored" data-anchor-id="text-to-columns"><span class="header-section-number">10.0.1</span> Text to columns</h3>
 <p>We want to split up the date field into day, month and year. Currently, the format is 2015-01-02. Luckily, the fields all share a common separator, a hyphen, and we can ask Google Sheets to split all according to the hyphen. Other common separators are commas and spaces.</p>
-<p>First steps when modifying data: make a backup copy! - Left click on the tab “Police Shootings to Clean” - Select duplicate - Rename “Copy of Police Shootings to Clean” to “Original Police Shootings to Clean.” Do not touch this version.</p>
+<p>First steps when modifying data: <strong>make a backup copy!</strong> - Left click on the tab “Police Shootings to Clean” - Select duplicate - Rename “Copy of Police Shootings to Clean” to “Original Police Shootings to Clean.” Do not touch this version.</p>
 <p>Time to split text to columns. I am extra paranoid (for good reason) and so I always duplicate a date field before modifying it. Duplicate the date column (click on Column C, left click, copy, then Insert column to left, select new blank Column C and paste), save the copy as date-original.</p>
 <ul>
 <li>Select date column</li>
