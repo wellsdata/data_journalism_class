@@ -20,9 +20,8 @@ help.start()
 
 You should have installed tidyverse already. If not, then delete the hashtag in front of install.packages("tidyverse") and run the code chunk at line 22.
 ```{r}
-options(repos = "https://cloud.r-project.org") 
-install.packages("tidyverse")
-install.packages("rio")
+#install.packages("tidyverse")
+install.packages("rio") 
 install.packages("janitor")
 ```
 
