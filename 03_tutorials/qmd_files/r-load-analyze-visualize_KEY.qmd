@@ -399,7 +399,10 @@ median(Bloom$Salary)
 Bloom %>% 
   slice_max(Salary, n=5)
 
-#The top reported Bloomberg salary is $60,000 for an entry level reporter, a female with no disclosed race. By this survey, NY Times reporters are paid more but just half as many Bloomberg staff, or 14, responded to the survey versus 29 NY Times staff, so the sample is off. Anecdotally, Bloomberg generally pays very well.
+#The median Bloomberg salary is $50,350, $1,650 less than the NYT. Anecdotally, Bloomberg generally pays very well.
+
+
+
 
 ```
 
