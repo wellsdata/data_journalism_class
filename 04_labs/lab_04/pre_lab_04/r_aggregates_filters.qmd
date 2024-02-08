@@ -49,8 +49,9 @@ Inside of the **read_csv()** function, we've put the name of the file we want to
 Here is the entire command in a code chunk. Run it by clicking the green arrow to the right below. 
 
 ```{r eval=FALSE, message=FALSE}
+#Set working directory to .../data_journalism_class/04_labs/lab_04/pre_lab_04
 
-baltcity_income<- read_csv("assets/data/baltcity_income_clean.csv") %>% 
+baltcity_income<- read_csv("baltcity_income_clean.csv") %>% 
   as.data.frame()
 
 ```
@@ -245,7 +246,7 @@ Let's pull in another dataset and summarize by group.
 
 ```{r, message=FALSE}
 #loading 2020 and 2010 Baltimore City population by race
-baltcity_race <- read_csv("assets/data/baltcity_race_8_13.csv") %>% 
+baltcity_race <- read_csv("baltcity_race_8_13.csv") %>% 
   as.data.frame()
 ```
 

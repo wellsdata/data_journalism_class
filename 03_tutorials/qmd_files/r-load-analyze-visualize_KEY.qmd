@@ -372,7 +372,7 @@ This is a basic chart using ggplot. To break down the code:
 NYT <- MediaBucks %>% filter(COMPANY == "NewYorkTimes")
 
 median(NYT$Salary)
-#Median salary is $52000
+#Median salary at the New York Times is $52,000
 
 #XYZ
 
@@ -382,9 +382,11 @@ median(NYT$Salary)
       2: Identify title, gender and race of the highest paid position at NYT  
 ```{r}
  NYT %>% 
-  slice_max(Salary, n=5)
+  slice_max(Salary, n=1)
 
-#The highest paid person is the Executive Editor, who earned $350,000 and is a black male.
+#The highest paid person is the Executive Editor, who earned $350,000 and is a black and no answer on gender.
+
+
 ```
 
 
