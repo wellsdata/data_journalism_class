@@ -279,18 +279,20 @@ Draft a tweet with your findings.
 ```{r}
 top <- baltcity_income %>%
   select(Census, x2020) %>% 
-  filter(x2020 > 52164) %>%
+  filter(x2020 > 49875) %>%
   count()
-#89 census tracts above the citywide median income of $52164
+#There were 97 census tracts above the citywide median income of $49875
 
 bottom <- baltcity_income %>%
   select(Census, x2020) %>% 
-  filter(x2020 < 52164) %>%
+  filter(x2020 < 49875) %>%
   count()
-#106 census tracts below the citywide median income of $52164
+#97 census tracts below the citywide median income of $49875
 
 answer <- (bottom/200)
 answer
+
+There are 48.5% of the Census tracts below the median income of $49,875
 
 ```
 
