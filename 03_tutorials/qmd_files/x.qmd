@@ -48,12 +48,13 @@ Inside of the **read_csv()** function, we've put the name of the file we want to
 
 Here is the entire command in a code chunk. Run it by clicking the green arrow to the right below. 
 
-```{r eval=FALSE, message=FALSE}
+```{r }
 #Set working directory to .../data_journalism_class/04_labs/lab_04/pre_lab_04
 
 baltcity_income <- read.csv("assets/data/baltcity_income_clean.csv") %>% 
   as.data.frame()
 
+print(baltcity_income)
 ```
 
 In this data set, each row represents a Census district, and each column represents a feature of that district: its location, the median household income in 2010, 2016, 2020, the neighborhood identifier and geographic coordinators.
