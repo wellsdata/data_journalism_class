@@ -269,11 +269,33 @@ baltcity_race %>%
 
 ```
 
+
+### Mutate
+
+One powerful function in `dplyr` is the `mutate` command, which allows us to add together columns, create new columns with averages, percentages, or other calculations. We'll get into this more next week, but understand that `mutate` is an important go-to command to transform existing data into something new. It's very powerful and you will use it a lot.
+
+Here's a brief example using the baltcity_race table. We want to construct a ratio of the black population to the white population by Census tract. With mutate, we create a new column called ratio_w_b and then insert the math: the 2020 black population by census tract divided into the 2020 white population. And then we sort in descending order, highest to lowest
+
+
+```{r}
+
+race1 <- baltcity_race %>% 
+  select(census_tract, x2020_white, x2020_black) %>% 
+  mutate(ratio_w_b = (x2020_black/x2020_white)) %>% 
+  arrange(desc(ratio_w_b))
+
+head(race1)
+```
+
+
+Look at the new table above: we have a new column -- ratio_w_b -- that shows the Black to white population ratio. In the next chapter, we will use mutate to kick up your data skils a notch.
+
+
 **Pre-Lab Question: **
 We know the median income for Baltimore City (I just told you a few paragraphs ago).
-Construct a filter for all census tracts below the citywide median household income for 2020.
+Construct a filter for all census tracts below the citywide average household income for 2020.
 Count them. 
-What percentage of the city's census tracts are below the median? Put that in code too.
+What percentage of the city's census tracts are below the average? Put that in code too.
 Draft a tweet with your findings.
 
 Answer this question in English: Write in Elms

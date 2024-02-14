@@ -3,6 +3,7 @@ output: html_document
 editor_options: 
   chunk_output_type: console
 ---
+
 # Mutating data {#r-mutating}
 
 Often the data will prompt questions that lack immediate answers. We're continuing to work with the Baltimore median income data and we want to know how incomes changed over time by census tract and the percentage change.
@@ -102,12 +103,13 @@ maryland_ppp <- read_csv("assets/data/ppp_applications_md_small.csv")
 Take a look at the `city` column in our data.
 
 ```{r eval=FALSE}
+#uncomment below to see the entire dataframe
 #View(maryland_ppp)
 ```
 
 You'll notice that there's a mix of styles: "Baltimore" and "BALTIMORE" for example. R will think those are two different cities, and that will mean that any aggregates we create based on city won't be accurate.
 
-So how can we fix that? Mutate is not just for math! And a function called `str_to_upper` that will convert a character column into all uppercase.
+How can we fix that? Mutate to the rescue! And a function called `str_to_upper` that will convert a character column into all uppercase.
 
 ```{r}
 maryland_ppp %>%
@@ -118,7 +120,11 @@ maryland_ppp %>%
   head()
 ```
 
+
+::: {.alert .alert-info .opacity-2}
+Pro Tip: 
 Notice we kept the original data in `city` and transformed it in a new column, `upper_city`. Always a good practice to keep your original data intact in case you make a coding mistake or need to change the original for reference.
+:::
 
 We could do the same thing with the `address` column in order to standardize that for analysis, too.
 
@@ -203,5 +209,3 @@ Produce a second table with the top 25 places ranked by the lowest or negative p
 **Question #2:** Answer this question in English: Write in Elms
 
 2)  Building on the previous lesson on filtering, describe how you would determine the median value of the percentage change and produce a table with the 10 neighborhoods with the highest change and the 10 with the lowest change.
-
-
