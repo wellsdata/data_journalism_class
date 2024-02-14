@@ -11,7 +11,8 @@ The two libraries we are going to need for this assignment are `readr` and `dply
 
 To use a library, you need to import it. Put all your library steps at the top of your notebooks. Both of these libraries are contained in the [Tidyverse suite of eight essential software packages](https://www.tidyverse.org/packages/). So just load tidyverse and dplyr and readr are ready to go.
 
-```{r}
+```{r, message = FALSE, warning = FALSE}
+
 library(tidyverse)
 ```
 
@@ -48,7 +49,7 @@ Inside of the **read_csv()** function, we've put the name of the file we want to
 
 Here is the entire command in a code chunk. Run it by clicking the green arrow to the right below. 
 
-```{r eval=FALSE, message=FALSE}
+```{r}
 #Set working directory to .../data_journalism_class/04_labs/lab_04/pre_lab_04
 
 baltcity_income <- read.csv("assets/data/baltcity_income_clean.csv") %>% 
@@ -244,9 +245,9 @@ Use the right diamond at `x2016_median` to see columns 5-7.
 There's much more we can to summarize each group.
 Let's pull in another dataset and summarize by group.
 
-```{r, message=FALSE}
+```{r}
 #loading 2020 and 2010 Baltimore City population by race
-baltcity_race <- read_csv("baltcity_race_8_13.csv") %>% 
+baltcity_race <- read_csv("assets/data/baltcity_race_8_13.csv") %>% 
   as.data.frame()
 ```
 
