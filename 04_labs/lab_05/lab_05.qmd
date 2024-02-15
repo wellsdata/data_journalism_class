@@ -64,7 +64,12 @@ Include the code to show the number of records. Clean the names using Janitor
 ```
 
 **Q2.** 
-For this question, load a modified dataset that has the same information but with the Baltimore neighborhoods added. It's called balt_death_census.csv. Call this table balt_death2. 
+For this question, load a modified dataset called balt_death_census.csv.
+
+Call it balt_death2
+
+This has the same information but with the Baltimore neighborhoods. 
+
 Produce a summary of basic statistics on the average life expectancy rate.
 
 Show the neighborhoods with a life expectancy rate below the 1st quartile, arranged in ascending order. 
@@ -98,8 +103,13 @@ Then write 150-200 words on this document below your code that compares your fin
 
 **Q4.**
 
-Use balt_death. Use the case_when command in mutate to categorize all Baltimore City Census tracts as being above or below the city's average life expectancy rate. 
+Use balt_death. Use mutate and the case_when command.
+
+Categorize all Baltimore City Census tracts as being above or below the city's average life expectancy rate. 
+
 Then produce a short table that summarizes the number of Census tracts above or below the average life expectancy rate. Write two sentences summarizing your findings.
+
+Pro Tip: See this chapter section for a refresher on case_when: https://wellsdata.github.io/data_journalism_class/_book/r-mutating.html#a-more-powerful-use
 
 
 ```{r}
