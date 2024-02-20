@@ -291,6 +291,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#filters-extracting-needles-from-haystacks" id="toc-filters-extracting-needles-from-haystacks" class="nav-link" data-scroll-target="#filters-extracting-needles-from-haystacks"> <span class="header-section-number">14.2.1</span> Filters: Extracting Needles from Haystacks</a></li>
   <li><a href="#other-summarization-methods-mean-median-min-and-max" id="toc-other-summarization-methods-mean-median-min-and-max" class="nav-link" data-scroll-target="#other-summarization-methods-mean-median-min-and-max"> <span class="header-section-number">14.2.2</span> Other summarization methods: mean, median, min and max</a></li>
   <li><a href="#using-sum" id="toc-using-sum" class="nav-link" data-scroll-target="#using-sum"> <span class="header-section-number">14.2.3</span> Using sum</a></li>
+  <li><a href="#mutate" id="toc-mutate" class="nav-link" data-scroll-target="#mutate"> <span class="header-section-number">14.2.4</span> Mutate</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -623,7 +624,30 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 1      178996      375002</code></pre>
 </div>
 </div>
-<p><strong>Pre-Lab Question: </strong> We know the median income for Baltimore City (I just told you a few paragraphs ago). Construct a filter for all census tracts below the citywide median household income for 2020. Count them. What percentage of the city’s census tracts are below the median? Put that in code too. Draft a tweet with your findings.</p>
+</section>
+<section id="mutate" class="level3" data-number="14.2.4">
+<h3 data-number="14.2.4" class="anchored" data-anchor-id="mutate"><span class="header-section-number">14.2.4</span> Mutate</h3>
+<p>One powerful function in <code>dplyr</code> is the <code>mutate</code> command, which allows us to add together columns, create new columns with averages, percentages, or other calculations. We’ll get into this more next week, but understand that <code>mutate</code> is an important go-to command to transform existing data into something new. It’s very powerful and you will use it a lot.</p>
+<p>Here’s a brief example using the baltcity_race table. We want to construct a ratio of the black population to the white population by Census tract. With mutate, we create a new column called ratio_w_b and then insert the math: the 2020 black population by census tract divided into the 2020 white population. And then we sort in descending order, highest to lowest</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>race1 <span class="ot">&lt;-</span> baltcity_race <span class="sc">%&gt;%</span> </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(census_tract, x2020_white, x2020_black) <span class="sc">%&gt;%</span> </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratio_w_b =</span> (x2020_black<span class="sc">/</span>x2020_white)) <span class="sc">%&gt;%</span> </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(ratio_w_b))</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(race1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          census_tract x2020_white x2020_black ratio_w_b
+1    Census Tract 1502           0        2444       Inf
+2    Census Tract 1605           0        3643       Inf
+3 Census Tract 2804.02           1        1264 1264.0000
+4 Census Tract 1608.02          10        3264  326.4000
+5    Census Tract 1607          12        3806  317.1667
+6 Census Tract 1608.01          11        3167  287.9091</code></pre>
+</div>
+</div>
+<p>Look at the new table above: we have a new column – ratio_w_b – that shows the Black to white population ratio. In the next chapter, we will use mutate to kick up your data skils a notch.</p>
+<p><strong>Pre-Lab Question: </strong> We know the median income for Baltimore City (I just told you a few paragraphs ago). Construct a filter for all census tracts below the citywide average household income for 2020. Count them. What percentage of the city’s census tracts are below the average? Put that in code too. Draft a tweet with your findings.</p>
 <p>Answer this question in English: Write in Elms</p>
 
 

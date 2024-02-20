@@ -206,6 +206,19 @@ Produce a second table with the top 25 places ranked by the lowest or negative p
  
 ```
 
-**Question #2:** Answer this question in English: Write in Elms
+**Question #2: **
+A) Determine the summary statistics of mdcities median income for 2020. Determine the value for the first quartile.
 
-2)  Building on the previous lesson on filtering, describe how you would determine the median value of the percentage change and produce a table with the 10 neighborhoods with the highest change and the 10 with the lowest change.
+B) Use mutate and case_when to create a column called "category." Within this, label cities in the first quartile as "lowest" and the remaining "above". Create a new table called "lowest" with your results
+
+```{r}
+
+
+```
+
+
+
+**Question #3: **
+Answer this question in English: Write in Elms
+
+Building on the previous lesson on filtering, describe how you would determine the median value of the percentage change and produce a table with the 10 neighborhoods with the highest change and the 10 with the lowest change.

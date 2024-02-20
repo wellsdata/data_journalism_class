@@ -416,10 +416,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For this example, we’ll examine a dataset of loans small businesses obtained to stay afloat during the Covid-19 pandemic. It’s called the PPP loan database which stands for Paycheck Protection Program loans.</p>
 <p>Take a look at the <code>city</code> column in our data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#View(maryland_ppp)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#uncomment below to see the entire dataframe</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#View(maryland_ppp)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You’ll notice that there’s a mix of styles: “Baltimore” and “BALTIMORE” for example. R will think those are two different cities, and that will mean that any aggregates we create based on city won’t be accurate.</p>
-<p>So how can we fix that? Mutate is not just for math! And a function called <code>str_to_upper</code> that will convert a character column into all uppercase.</p>
+<p>How can we fix that? Mutate to the rescue! And a function called <code>str_to_upper</code> that will convert a character column into all uppercase.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>maryland_ppp <span class="sc">%&gt;%</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
@@ -439,7 +440,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 6 Brentwood       BRENTWOOD       GOSHEN HOUSE TRADING LLC        346500</code></pre>
 </div>
 </div>
-<p>Notice we kept the original data in <code>city</code> and transformed it in a new column, <code>upper_city</code>. Always a good practice to keep your original data intact in case you make a coding mistake or need to change the original for reference.</p>
+<div class="alert alert-info opacity-2">
+<p>Pro Tip: Notice we kept the original data in <code>city</code> and transformed it in a new column, <code>upper_city</code>. Always a good practice to keep your original data intact in case you make a coding mistake or need to change the original for reference.</p>
+</div>
 <p>We could do the same thing with the <code>address</code> column in order to standardize that for analysis, too.</p>
 <p>Think of how easy this is compared to a similar data cleaning lesson in Google Sheets.</p>
 </section>
@@ -527,10 +530,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 
 </div>
-<p><strong>Question #2:</strong> Answer this question in English: Write in Elms</p>
-<ol start="2" type="1">
-<li>Building on the previous lesson on filtering, describe how you would determine the median value of the percentage change and produce a table with the 10 neighborhoods with the highest change and the 10 with the lowest change.</li>
+<p><strong>Question #2: </strong> A) Determine the summary statistics of mdcities median income for 2020. Determine the value for the first quartile.</p>
+<ol start="2" type="A">
+<li>Use mutate and case_when to create a column called “category.” Within this, label cities in the first quartile as “lowest” and the remaining “above”. Create a new table called “lowest” with your results</li>
 </ol>
+<div class="cell">
+
+</div>
+<p><strong>Question #3: </strong> Answer this question in English: Write in Elms</p>
+<p>Building on the previous lesson on filtering, describe how you would determine the median value of the percentage change and produce a table with the 10 neighborhoods with the highest change and the 10 with the lowest change.</p>
 
 
 </section>
