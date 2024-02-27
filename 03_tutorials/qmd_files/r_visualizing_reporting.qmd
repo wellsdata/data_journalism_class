@@ -36,7 +36,7 @@ This tutorial uses a subset of this data [^r_visualizing_reporting-1]
 [^r_visualizing_reporting-1]: The Calls for Service were filtered as follows: CONTAINS homeless, 915, 919, 920: Downloaded 157,237 records 3/31/16 to 11/30/2019. This is 5.1% of all calls in the broader database. File renamed to: SF_311.xlsx
 
 ```{r, message=FALSE}
-SF <- read_csv("assets/data/SF_311.csv")
+SF <- read_csv("SF_311.csv")
 ```
 
 Clean column names, Process dates
