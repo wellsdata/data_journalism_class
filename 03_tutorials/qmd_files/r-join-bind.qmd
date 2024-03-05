@@ -333,6 +333,33 @@ all_county_population
 ```
 
 **Question #1: **
+
+Import maryland_tracts.xls and then md_counties_geoids.txt
+Perform an inner_join on maryland_tracts and md_counties on the common identifier. 
+
+TIP: when the columns you want to join have different names:
+table1 %>% 
+  inner_join(table2, by=c("table1_column"="table2_column"))
+  
+Name the new table "md_smith_data"
+```{r}
+
+
+
+```
+
+
+With your maryland_smith_data table, produce a summary table showing the county name and the average census response rate for 2020. arrange the table in descending order. 
+Identify the county with the highest average census response rate for 2020 and the county with the lowest.
+```{r}
+
+
+
+```
+
+
+
+**Question #2: **
 Answer this question in English: Write in Elms
 
 You have a dataframe that contains information on the population of each Maryland county, structured like this example (the column headers and one example row):

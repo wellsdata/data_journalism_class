@@ -1,5 +1,5 @@
 #lab_07 
-Sean Mussenden, Aug 16, 2022
+Sean Mussenden
 
 ## About this lab
 
@@ -18,8 +18,8 @@ For today's lab, we are using the DEA's ARCOS database, which tracks shipments o
 
 There are four tables in the data folder. 
 
-* arcos.csv has the total number of opioid pills shipped to pharmacies located in each U.S. county each year (from 2006-2014). Each row represents one county in one year during that period. In some states, counties and cities are represented. You will need this for both questions.
-* county_population_2014.csv has the total population of each U.S. county (or city in some states) in 2014 from the American Community Survey. You will need to use this for the first question.
+* arcos.csv has the total number of opioid pills shipped to pharmacies located in each U.S. county each year (from 2006-2014). Each row represents one county in one year during that period. In some states, counties and cities are represented. Each county has a unique FIPS code, which stands for Federal Information Processing System (FIPS), which identify geographic areas. You will need this for both questions.
+* county_population_2014.csv has the total population of each U.S. county (or city in some states) in 2014 from the American Community Survey. It has a unique numeric identifier for the county called GEOID. You will need to use this for the first question.
 * state_population_2014.csv has the total population of each U.S. state in 2014 from the American Community Survey. You will need to use this for the second question.
 * state_crosswalk.csv is a simple dataframe with two columns listing the state and its abbreviation.  You may need to use this for the second question.
 
