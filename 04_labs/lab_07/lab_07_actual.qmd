@@ -43,5 +43,5 @@ Which U.S. state saw the highest percentage increase in opiod pills from 2006 to
 --Write a sentence that could be dropped in as the lede of a news story from the finding in question two. 
 
 
-**Q3_For Tuesday. Not for March 7 Lab** Which U.S. state had the highest number of opioid pills per person for pills shipped in 2014? How many total pills, and what was the per person rate? How did that compare to Washington, D.C.?
+**Q3** Which U.S. state had the highest number of opioid pills per person for pills shipped in 2014? How many total pills, and what was the per person rate? How did that compare to Washington, D.C.?
 
