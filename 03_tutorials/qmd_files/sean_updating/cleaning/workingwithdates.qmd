@@ -21,7 +21,7 @@ library(lubridate)
 Let's start with a dataset of campaign expenses from Maryland political committees:
 
 ```{r}
-maryland_expenses <- read_csv("data/maryland_expenses.csv")
+maryland_expenses <- read_csv("maryland_expenses.csv")
 
 head(maryland_expenses)
 ```
