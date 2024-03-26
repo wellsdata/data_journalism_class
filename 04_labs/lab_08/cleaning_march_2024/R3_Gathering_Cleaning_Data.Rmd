@@ -271,6 +271,9 @@ SF <- rio::import("SF_311_Jan29.xlsx", which = "SF Police_Department_Calls_for_"
 - **Clean column names, Process dates** 
 ```{r}
 SF <- janitor::clean_names(SF)
+glimpse(SF)
+
+
 #Process dates
 SF$call_date2 <- ymd(SF$call_date)
 SF$year <- year(SF$call_date2)
