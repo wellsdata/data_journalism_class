@@ -61,7 +61,7 @@ In the code block below, replace YOUR KEY HERE with your key you get by email.  
 ```{r}
 census_api_key("PUT YOUR OWN KEY HERE!!!", install=TRUE, overwrite = TRUE)
 
-census_api_key("9cabe8a191a1f824755d4a1845f13cb08faa2c5f", install = TRUE, overwrite = TRUE)
+
 ```
 
 The two main functions in tidycensus are `get_decennial`, which retrieves data from the 2000 and 2010 Censuses (and soon the 2020 Census), and `get_acs`, which pulls data from the American Community Survey, a between-Censuses annual survey that provides estimates, not hard counts, but asks more detailed questions. 
