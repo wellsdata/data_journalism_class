@@ -1,26 +1,5 @@
-#lab_11 Rob Wells, April 11, 2024
+#Tutorial, April 16, 2024
 
-## About this lab
-
-To complete this lab, you need to: \* write code in empty codeblocks provided to answer questions included (look for **Q**). \* write out the answer in the form of a complete sentence in the space given (look for **A**).
-
-When you are finished, commit changes and push to your personal GitHub repo, then submit the URL to this document on ELMS.
-
-## Overview
-
-There are three main goals of this lab:
-
--   learn to make use of R packages that can access data via third-party APIs.
--   learn to develop a quick and accurate understanding of what data can be obtained via third-party APIs.
--   learn to develop questions that can be answered using that data, and avoid developing questions that cannot.
-
-## APIs to choose from
-
--   tidycensus - for asking census-related questions.
-
-## Load libraries
-
-**Task**: load the tidyverse and janitor. Uncomment the one other package you plan to work with. Do not choose more than one API package.
 
 ```{r}
 library(tidyverse)
@@ -33,25 +12,10 @@ library(tidycensus)
 
 ```
 
-## Get setup to access third-party APIs
-
-### tidycensus
-
-Use the U.S. census access token you created for this week's lab. You can store it by editing the block below to replace 'YOUR KEY HERE' with your actual key, a long string of letters and numbers. If you need to sign up for another one, you can do so here: [apply for an API key with the Census Bureau](https://api.census.gov/data/key_signup.html).
 
 ```{r}
-census_api_key("000d604c5cf0be9433b56cc61f82e559d0b26f0d", install=TRUE, overwrite=TRUE)
+census_api_key("xyz", install=TRUE, overwrite=TRUE)
 ```
-
-### tidycensus
-
-This package is designed to help you pull demographic information about different U.S. geographies.
-
--   Basic usage https://walker-data.com/tidycensus/articles/basic-usage.html
--   Functions: https://walker-data.com/tidycensus/reference/index.html
--   More details https://walker-data.com/tidycensus/
-
-Sample question: which state saw the largest growth in Hispanic population between 2010 and 2020?
 
 ```{r}
 
@@ -165,3 +129,48 @@ total_foreign_born <-total_foreign_born %>%
 
 
 ```
+
+```{r}
+
+white_youth_pop <- get_acs(
+  geography = "state",
+  variables = c(
+    population = "B01001A_003", "B01001A_004", "B01001A_005", "B01001A_006",
+    "B01001A_018", "B01001A_019", "B01001A_020", "B01001A_021"
+  ),
+  year = 2020
+)
+
+black_youth_pop <- get_acs(
+  geography = "state",
+  variables = c(
+    population = "B01001B_003", "B01001B_004", "B01001B_005", "B01001B_006",
+    "B01001B_018", "B01001B_019", "B01001B_020", "B01001B_021"
+  ),
+  year = 2020
+)
+
+total_white_youth_pop <- sum(white_youth_pop$estimate)
+total_black_youth_pop <- sum(black_youth_pop$estimate)
+
+
+
+total_pop <- get_acs(geography = "state",
+              variables = c(total_population = "B01001_001", black_male_population = "B01001B_001"),
+              year = 2020) %>%
+  arrange(desc(estimate))
+```
+
+```{r}
+black_pop <- get_acs(geography = "state",
+              variables = c(male_population = "B01001B_001"),
+              year = 2020) %>%
+  arrange(desc(estimate))
+```
+
+```{r}
+joined_black_total_pop <- total_pop %>%
+  inner_join(black_pop, by="NAME")
+
+```
+
