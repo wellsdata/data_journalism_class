@@ -60,6 +60,31 @@ asian_2010 <- get_acs(geography = "state",
 
 ```
 
+#Pivot Wider
+```{r}
+
+# See vignette("pivot") for examples and explanation
+
+# Generate column names from multiple variables
+us_rent_income
+us_rent_income %>%
+  pivot_wider(
+    names_from = variable,
+    values_from = c(estimate, moe)
+  )
+
+# You can control whether `names_from` values vary fastest or slowest
+# relative to the `values_from` column names using `names_vary`.
+us_rent_income %>%
+  pivot_wider(
+    names_from = variable,
+    values_from = c(estimate, moe),
+    names_vary = "slowest"
+  )
+
+
+```
+
 
 #2: Male Population and Pivot Wider
 
@@ -73,4 +98,5 @@ asian_2010 <- get_acs(geography = "state",
 
 
 ```
+
 
