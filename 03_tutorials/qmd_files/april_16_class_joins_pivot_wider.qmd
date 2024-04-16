@@ -1,0 +1,167 @@
+#lab_11 Rob Wells, April 11, 2024
+
+## About this lab
+
+To complete this lab, you need to: \* write code in empty codeblocks provided to answer questions included (look for **Q**). \* write out the answer in the form of a complete sentence in the space given (look for **A**).
+
+When you are finished, commit changes and push to your personal GitHub repo, then submit the URL to this document on ELMS.
+
+## Overview
+
+There are three main goals of this lab:
+
+-   learn to make use of R packages that can access data via third-party APIs.
+-   learn to develop a quick and accurate understanding of what data can be obtained via third-party APIs.
+-   learn to develop questions that can be answered using that data, and avoid developing questions that cannot.
+
+## APIs to choose from
+
+-   tidycensus - for asking census-related questions.
+
+## Load libraries
+
+**Task**: load the tidyverse and janitor. Uncomment the one other package you plan to work with. Do not choose more than one API package.
+
+```{r}
+library(tidyverse)
+library(janitor)
+
+###
+# tidycensus
+###
+library(tidycensus)
+
+```
+
+## Get setup to access third-party APIs
+
+### tidycensus
+
+Use the U.S. census access token you created for this week's lab. You can store it by editing the block below to replace 'YOUR KEY HERE' with your actual key, a long string of letters and numbers. If you need to sign up for another one, you can do so here: [apply for an API key with the Census Bureau](https://api.census.gov/data/key_signup.html).
+
+```{r}
+census_api_key("000d604c5cf0be9433b56cc61f82e559d0b26f0d", install=TRUE, overwrite=TRUE)
+```
+
+### tidycensus
+
+This package is designed to help you pull demographic information about different U.S. geographies.
+
+-   Basic usage https://walker-data.com/tidycensus/articles/basic-usage.html
+-   Functions: https://walker-data.com/tidycensus/reference/index.html
+-   More details https://walker-data.com/tidycensus/
+
+Sample question: which state saw the largest growth in Hispanic population between 2010 and 2020?
+
+```{r}
+
+###
+# Load ACS variables
+###
+
+acs_vars <- load_variables("acs5", year=2020)
+
+###
+# Get median household income for Maryland 2020
+###
+
+md <- get_acs(geography = "county",
+              variables = c(median_income = "B19013_001"),
+              state = "MD",
+              year = 2020) 
+
+
+```
+
+### Develop and answer questions
+
+**Task** Develop two different *interesting* questions that you can answer with the data. Run them by your professor before getting started on answering, to ensure they're sufficiently interesting and possible with the data.
+
+```{r}
+#Which state had the largest increase in Asian population?
+#B02001_005
+#Which state had the largest decrease in foreign born population?
+#B05002_013
+```
+
+**Task** Write code to answer the questions. Write up a sentence with each of your findings. Produce at least one visualization to support one of your findings.
+
+```{r}
+#Answering the first question
+#Create data sets 
+asian_2020 <- get_acs(geography = "state",
+              variables = c(asian_divide = "B02001_005"),
+              year = 2020) %>% 
+  rename(estimate_2020 = estimate)
+
+asian_2010 <- get_acs(geography = "state",
+              variables = c(asian_divide = "B02001_005"),
+              year = 2010) %>% 
+  rename(estimate_2010 = estimate)
+#Join the two data frames together
+#rsw comment: your version led to a sloppy join:
+#Join the two data frames together
+total_asian <- asian_2010 %>%
+  inner_join(asian_2020, by="GEOID")
+
+#rsw comment: you don't want to do this:
+#(estimate.y-estimate.x)/(estimate.x)
+#it looks awful and leads to confusion
+total_asian <-total_asian %>% 
+  mutate(change_asian = (estimate.y-estimate.x)/(estimate.x)*100) %>% 
+  arrange(desc(change_asian))
+
+#this version tightens up the df and makes it much more professional
+
+total_asian2 <- asian_2010 %>%
+  inner_join(asian_2020, by=c("GEOID", "NAME")) %>% 
+  select(GEOID, NAME, estimate_2010, estimate_2020)
+
+#then you get a cleaner calculation
+
+total_asian2 <-total_asian2 %>% 
+  mutate(change_asian = (estimate_2020-estimate_2010)/(estimate_2010)*100) %>% 
+  arrange(desc(change_asian))
+
+#North Dakota had the largest increase in Asian population between 2010 to 2020, going from a population of 6132 to 11979 which is a 95.4% increase. 
+
+
+```
+
+
+```{r}
+# Correct answers. I wound up doing it a more efficient way by using the ACS total population estimate. The numbers are more up to date and it throws off the calculations a bit, but it has the same basic answer:
+
+male <- get_acs(geography = "state",
+                variables = c(male_population = "B01001_002", total_pop = "B01001_001"),
+                year = 2020) %>% 
+  rename(state = NAME) %>% 
+  select(state, variable, estimate) %>% 
+  pivot_wider(names_from = variable, values_from = estimate) %>% 
+  mutate(pct_male = male_population/total_pop *100) %>% 
+  arrange(desc(pct_male))
+
+
+
+```
+
+
+```{r}
+#Answering the second question
+foreign_born_2010 <- get_acs(geography = "state",
+              variables = c(foreign_born = "B05002_013"),
+              year = 2010) 
+foreign_born_2020 <- get_acs(geography = "state",
+              variables = c(foreign_born = "B05002_013"),
+              year = 2020) 
+total_foreign_born <- foreign_born_2010 %>%
+  inner_join(foreign_born_2020, by="GEOID")
+
+total_foreign_born <-total_foreign_born %>% 
+  mutate(change_foreign = (estimate.y-estimate.x)/(estimate.x)*100) %>% 
+  arrange(desc(change_foreign))
+
+#Puerto Rico had the largest decrease in foreign born population from 2010 to 2020, going from 105593 to 88386, a -16.3% decrease. 
+
+
+```
