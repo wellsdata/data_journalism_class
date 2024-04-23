@@ -125,7 +125,7 @@ and you should have your hosted file!
 
 **Get rid of extraneous words such as "blob" and just use your file name, ie: Hosting_GitHub_Page.html **
       
-      https://profrobwells.github.io/Test/Hosting_GitHub_Page.html
+https://wellsdata.github.io/data_journalism_class/04_labs/lab_13/Hosting_GitHub_Page.html
       
       
 In other words:  
