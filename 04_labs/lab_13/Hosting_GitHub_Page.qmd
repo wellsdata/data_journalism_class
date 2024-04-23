@@ -31,7 +31,7 @@ We can create links, like this: [google](https://google.com)
 
 We can **bold** or *italic* text. 
 
-We can create bulleted lists
+We can create bulleted lists.  
 
 * bullet one
 * bullet two
