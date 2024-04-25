@@ -135,6 +135,54 @@ In other words:
 
     
 
-# REVEL IN YOUR NERD POWERS  
+#### REVEL IN YOUR NERD POWERS  
 
+# Part 2 - Thursday. 
+
+### Embedding Images  
+
+* create a folder in your repo, call it images
+
+* find any .jpg or .png file and insert it into that folder.
+
+* In a QMD file, display the image as follows:
+
+![](images/your_link_here.png)
+
+![](images/xl-refresher-grid_SHEETS.png)
+
+
+A more advanced technique controlling the width and height
+
+![Read the Screen](images/xl-refresher-SHEETS_screen.png){width="100%"}
+
+
+### Embedding code
+
+From a **Datawrapper Map**
+
+<iframe title="Small Business Reporting, Spring 2024" aria-label="Map" id="datawrapper-chart-z4bny" src="https://datawrapper.dwcdn.net/z4bny/5/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="873" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r=0;r<e.length;r++)if(e[r].contentWindow===a.source){var i=a.data["datawrapper-height"][t]+"px";e[r].style.height=i}}}))}();
+</script>
+
+
+### Embedding video
+
+Video walkthrough
+
+
+::: {#first_steps}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1hGoYzmkhfc">
+
+</iframe>
+:::
+
+
+
+### Embed a GIF
+
+```{r text_to_columns.gif, out.width="100%", echo=FALSE}
+
+if (knitr::is_html_output()) knitr::include_graphics("images/text_to_columns.gif")  
+
+```
 
