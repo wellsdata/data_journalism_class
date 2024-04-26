@@ -161,7 +161,7 @@ A more advanced technique controlling the width and height
 
 From a **Datawrapper Map**
 
-<iframe title="Small Business Reporting, Spring 2024" aria-label="Map" id="datawrapper-chart-z4bny" src="https://datawrapper.dwcdn.net/z4bny/5/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="873" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r=0;r<e.length;r++)if(e[r].contentWindow===a.source){var i=a.data["datawrapper-height"][t]+"px";e[r].style.height=i}}}))}();
+<iframe title="Small Business Reporting, Spring 2024" aria-label="Map" id="datawrapper-chart-z4bny" src="https://datawrapper.dwcdn.net/z4bny/5/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="500" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r=0;r<e.length;r++)if(e[r].contentWindow===a.source){var i=a.data["datawrapper-height"][t]+"px";e[r].style.height=i}}}))}();
 </script>
 
 
@@ -176,6 +176,8 @@ Video walkthrough
 </iframe>
 :::
 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DIDHbEZYFSc?si=a-KNzlQgoGjXD6VV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 ### Embed a GIF
