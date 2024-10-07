@@ -1,6 +1,13 @@
+---
+title: "Untitled"
+format: html
+editor: visual
+---
+
+
 # Grouping with pivot tables {#xl-pivot}
 
-In the wake of a police shooting in 2016, reporter Mitch Smith obtained a [list of traffic stops](https://cronkitedata.s3.amazonaws.com/xlfiles/saintanthony_police.xlsx) from the St. Anthony Police Department in Minnesota. He was writing a story on Philandro Castile's death and was running out of time. He wanted to answer a simple question: Were minority motorists more likely to be stopped in St. Anthony than whites?
+In the wake of a police shooting in 2016, reporter Mitch Smith obtained a [list of traffic stops](https://cronkitedata.s3.amazonaws.com/xlfiles/saintanthony_police.xlsx){target="_blank"} from the St. Anthony Police Department in Minnesota. He was writing a story on Philandro Castile's death and was running out of time. He wanted to answer a simple question: Were minority motorists more likely to be stopped in St. Anthony than whites?
 
 Rob Gebeloff made a quick pivot table to answer the question. That night, [Smith wrote](https://www.nytimes.com/2016/07/13/us/philando-castile-minnesota-police-shooting.html):
 
