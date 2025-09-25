@@ -1,0 +1,138 @@
+---
+title: "Cheltenham PDF and processing"
+author: "Rob Wells"
+date: "2025-09-25"
+output: html_document
+---
+# Part 1: Scrape a PDF and split into separate text files
+
+```{r}
+#install.packages("pdftools")
+library(tidyverse)
+library(pdftools)
+library(dplyr)
+library(rio)
+library(tidytext)
+library(quanteda)
+library(knitr)
+```
+#Source: 
+I created a pdf from this website of the results on Sept. 25, 2025  and extracted the data
+
+https://www.findagrave.com/cemetery/2454348/memorial-search?firstname=&middlename=&lastname=&cemeteryName=Boy%27s+Village+of+Maryland+Cemetery&birthyear=&birthyearfilter=&deathyear=&deathyearfilter=&bio=&linkedToName=&plot=&memorialid=&mcid=&datefilter=&orderby=n&page=1#sr-250171171 
+
+
+## Convert PDF to text
+```{r}
+#Using pdftools package. Good for basic PDF extraction
+
+text <- pdf_text("/Users/gizmofo/Code/data_journalism_class/Cheltenham/Find_a_Grave.pdf")
+#pdf_text reads the text from a PDF file.
+writeLines(text, "graves.txt")
+#writeLines writes this text to a text file
+```
+
+###Convert text into DF and clean
+
+```{r}
+index <- read_lines("graves.txt")
+
+# Print the extracted lines to the console
+cat(index, sep = "\n")
+
+index <- index |> 
+  as.data.frame() 
+```
+
+
+```{r}
+
+simplified_df <- index |> 
+  rename(name = index) |> 
+  mutate(name = str_replace_all(name, "  • No grave photo", ""))
+```
+
+## Align the data
+```{r}
+# in r, i want to take the date entry, which is the next row after a name, and put it in to a new column called date on the same row as name. 
+
+# Assuming your dataframe is called 'df'
+# Create a new dataframe with names and dates properly aligned
+
+graves_df <- simplified_df %>%
+  # Remove empty rows
+  filter(!is.na(name) & name != "") %>%
+  # Create a helper column to identify if a row contains a date pattern
+  mutate(
+    is_date = grepl("\\d{1,4}\\s*(–|-)", name),
+    row_num = row_number()
+  ) %>%
+  # Create the date column by looking at the next row for each name
+  mutate(
+    date = case_when(
+      !is_date & lead(is_date) ~ lead(name),  # If current row is name and next row is date
+      TRUE ~ NA_character_
+    )
+  ) %>%
+  # Keep only the name rows (not the date rows)
+  filter(!is_date) %>%
+  # Clean up
+  select(name, date) %>%
+  # Remove any remaining rows where name or date is missing
+  filter(!is.na(date))
+
+print(graves_df)
+```
+
+### Create birth and death columns
+```{r}
+graves_df1 <- separate(data = graves_df, 
+                       col = date, 
+                       into = c("birth_date", "death_date"), 
+                       sep = "–",  # en dash, not regular hyphen
+                       extra = "merge", 
+                       fill = "right")
+```
+
+
+### Birth and Death years
+```{r}
+
+graves_df1 <- graves_df1 |> 
+  mutate(birth_year = as.numeric(str_extract(birth_date,"\\d{4}" )),
+         death_year = as.numeric(str_extract(death_date,"\\d{4}$" ))) |> 
+  mutate(approx_age = (death_year-birth_year))
+
+write.csv(graves_df1, "cheltenham_deaths_9_25_2025.csv")
+
+```
+
+
+#statistics
+```{r}
+summary(graves_df1$approx_age)
+
+# The youngest died at about age 9 and the oldest at age 21. The average age was 15.6 years and the median was age 16
+```
+
+
+
+## Graph of age
+```{r}
+graves_df1 |> 
+  group_by(approx_age) |> 
+  summarise(total = n()) |> 
+ggplot(aes(x = approx_age, y = total, fill = total)) +
+  geom_col(position = "dodge") +
+  theme(legend.position = "none") +
+  scale_x_continuous(breaks=c(9:21)) +
+  labs(title = "Ages of Cheltenham youth deaths",
+       subtitle = "From 1880-1939, Approximate Ages",
+       caption = "Graphic by Rob Wells, 9-25-2023",
+       y="Number",
+       x="Approximate Ages")
+
+
+```
+
+
