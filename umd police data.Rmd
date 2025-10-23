@@ -1,0 +1,28 @@
+---
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r}
+police <- read_csv("/Users/robwells/Downloads/Untitled spreadsheet - police data.csv")
+
+```
+
+#claude to the rescue
+```{r}
+data <- police %>%
+  mutate(
+    # Create location column: if UMPD Case Number is NA, 
+    # use the Date Occurred value as location, otherwise NA
+    Location = if_else(is.na(`UMPD Case Number`), 
+                       `Date Occurred`,
+                       NA_character_)
+  ) %>%
+  # Fill down the location to subsequent rows
+  fill(Location, .direction = "down") %>%
+  # Remove rows where UMPD Case Number is NA (the location header rows)
+  filter(!is.na(`UMPD Case Number`))
+
+```
+
