@@ -1,0 +1,252 @@
+---
+title: "Cheltenham data processing"
+author: "Wells"
+date: "2025-11-05"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(janitor)
+```
+### Import extracted data
+--data cleaning needs to remove a strange "" artifact and remove leading and trailing spaces
+```{r}
+
+master_index <- read_csv("MASTER_INDEX_11_3_2025.csv") |> 
+  clean_names() |> 
+  mutate(name = str_replace(name, "", ""),
+         name = str_squish(name)) 
+	
+
+```
+
+### Fix Names
+--AI code to extract the name into first, middle and last.
+--First extract the first name
+--Second, examine the remaining - if there's a space, then populate a middle name, if not then just the last name
+
+```{r}
+master_index <- master_index |> 
+  mutate(
+    # Split name into parts
+    name_parts = str_split(name, "\\s+"),
+    
+    # Extract first name (always the first element)
+    first_name = map_chr(name_parts, ~ .x[1]),
+    
+    # Extract middle and last name
+    middle_name = map_chr(name_parts, function(parts) {
+      if (length(parts) > 2) {
+        # Check if last part is a suffix
+        last_part <- parts[length(parts)]
+        is_suffix <- str_detect(last_part, "^(Jr\\.?|Sr\\.?|III?|IV|V)$")
+        
+        if (is_suffix && length(parts) > 3) {
+          # Middle name is everything between first and last two parts
+          paste(parts[2:(length(parts) - 2)], collapse = " ")
+        } else if (!is_suffix) {
+          # Middle name is everything between first and last part
+          paste(parts[2:(length(parts) - 1)], collapse = " ")
+        } else {
+          NA_character_
+        }
+      } else {
+        NA_character_
+      }
+    }),
+    
+    # Extract last name (includes suffix if present)
+    last_name = map_chr(name_parts, function(parts) {
+      last_part <- parts[length(parts)]
+      is_suffix <- str_detect(last_part, "^(Jr\\.?|Sr\\.?|III?|IV|V)$")
+      
+      if (is_suffix && length(parts) >= 2) {
+        # Include both last name and suffix
+        paste(parts[(length(parts) - 1):length(parts)], collapse = " ")
+      } else {
+        last_part
+      }
+    })
+  ) |> 
+  select(-name_parts)
+
+
+```
+
+
+### Fix Birth Date
+--a mix of years and full dates
+--filter the years to one df, dates to another, process separately and join
+
+```{r}
+master_index <- master_index |> 
+  mutate(
+    birth_date_new = dmy(birth_date),
+    # For entries where dmy() failed, try parsing as just a year
+    birth_date_new = if_else(
+      is.na(birth_date_new) & !is.na(birth_date),
+      ymd(paste0(birth_date, "-01-01")),  # Set to January 1st of that year
+      birth_date_new
+    )
+  ) |> 
+   mutate(
+    death_date_new = dmy(death_date),
+    # For entries where dmy() failed, try parsing as just a year
+   death_date_new = if_else(
+      is.na(death_date_new) & !is.na(death_date),
+      ymd(paste0(death_date, "-01-01")),  # Set to January 1st of that year
+      death_date_new
+    )
+  )
+
+
+
+```
+### New age column
+--divide days by 365
+
+```{r}
+
+master_index <- master_index |> 
+  mutate(age_days = (death_date_new-birth_date_new)) |> 
+   mutate(age = round(as.numeric(age_days) / 365.25))
+
+```
+
+
+#write to disk
+```{r}
+
+write_csv(master_index, "master_index_nov_4.csv")
+```
+
+
+### list of newspapers
+```{r}
+library(rvest)
+library(tidyverse)
+
+# List of LCCN codes
+lccn_codes <- c("sn82006687", "sn83009667", "sn83016107", "sn83016209", 
+                "sn83016348", "sn83016368", "sn83045462", "sn84026688",
+                "sn85025350", "sn85025407", "sn85038292", "sn88065202",
+                "sn88065721", "sn88065726", "sn89060060", "sn89060092",
+                "sn89060124", "sn89060136")
+
+# Function to scrape newspaper name from webpage
+get_newspaper_name_scrape <- function(lccn) {
+  url <- paste0("https://chroniclingamerica.loc.gov/lccn/", lccn, "/")
+  
+  tryCatch({
+    page <- read_html(url)
+    # Try to find the title
+    title <- page %>% 
+      html_element("title") %>% 
+      html_text()
+    
+    # Clean up the title (usually format is "Newspaper Name | Chronicling America")
+    name <- str_split(title, "\\|")[[1]][1] %>% str_trim()
+    return(name)
+  }, error = function(e) {
+    message("Error for ", lccn, ": ", e$message)
+    return(NA)
+  })
+  
+  Sys.sleep(1)  # Be polite
+}
+
+# Get all newspaper names
+newspaper_list <- tibble(
+  lccn = lccn_codes
+)
+
+newspaper_list <- newspaper_list %>%
+  mutate(newspaper_name = map_chr(lccn, get_newspaper_name_scrape))
+
+print(newspaper_list)
+```
+
+```{r}
+library(tidyverse)
+
+# Create a dataframe with LCCN codes and the newspaper names we found
+newspapers <- tibble(
+  lccn = c("sn82006687", "sn83009667", "sn83016107", "sn83016209", 
+           "sn83016348", "sn83016368", "sn83045462", "sn84026688",
+           "sn85025350", "sn85025407", "sn85038292", "sn88065202",
+           "sn88065721", "sn88065726", "sn89060060", "sn89060092",
+           "sn89060124", "sn89060136"),
+  
+  newspaper_name = c(
+    "Saint Mary's Beacon",                    # sn82006687
+    "",                                        # sn83009667
+    "",                                        # sn83016107
+    "Montgomery County Sentinel",              # sn83016209
+    "",                                        # sn83016348
+    "",                                        # sn83016368
+    "",                                        # sn83045462
+    "",                                        # sn84026688
+    "",                                        # sn85025350
+    "Maryland Independent",                    # sn85025407
+    "",                                        # sn85038292
+    "",                                        # sn88065202
+    "",                                        # sn88065721
+    "Evening Capital and Maryland Gazette",    # sn88065726
+    "",                                        # sn89060060
+    "",                                        # sn89060092
+    "",                                        # sn89060124
+    ""                                         # sn89060136
+  ),
+  
+  location = c(
+    "Leonardtown, MD",                        # sn82006687
+    "",                                        # sn83009667
+    "",                                        # sn83016107
+    "Rockville, MD",                          # sn83016209
+    "",                                        # sn83016348
+    "",                                        # sn83016368
+    "",                                        # sn83045462
+    "",                                        # sn84026688
+    "",                                        # sn85025350
+    "Port Tobacco/Waldorf, MD",               # sn85025407
+    "",                                        # sn85038292
+    "",                                        # sn88065202
+    "",                                        # sn88065721
+    "Annapolis, MD",                          # sn88065726
+    "",                                        # sn89060060
+    "",                                        # sn89060092
+    "",                                        # sn89060124
+    ""                                         # sn89060136
+  )
+)
+
+# Print the table
+print(newspapers)
+
+# Save to CSV for easy editing
+write_csv(newspapers, "maryland_newspapers.csv")
+
+# To manually look up each one, you can visit:
+# https://chroniclingamerica.loc.gov/lccn/[LCCN_CODE]/
+
+# For example, to look up the first unknown one:
+cat("\nTo look up newspapers, visit these URLs:\n")
+for(i in 1:nrow(newspapers)) {
+  if(newspapers$newspaper_name[i] == "") {
+    cat(paste0("https://chroniclingamerica.loc.gov/lccn/", 
+               newspapers$lccn[i], "/\n"))
+  }
+}
+
+# After you manually fill in the CSV, you can read it back:
+# newspapers_complete <- read_csv("maryland_newspapers.csv")
+```
+
+notes
+https://claude.ai/share/4a95465e-7b00-4d8b-b71d-32fae4dfc9bf
+

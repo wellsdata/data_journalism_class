@@ -3,3 +3,8 @@
 04_labs/.DS_Store
 04_labs/.DS_Store
 .Rproj.user
+.Rhistory
+.RData
+.Rproj.user/
+.Renviron
+.Rprofile
