@@ -1,0 +1,28 @@
+Fields,Results
+Name in Full,Sylvester Coulbourn
+Died at Town,Cheltenham
+Died at County,Prince George
+Died at State,MARYLAND
+Date Year,1901
+Date Month,7
+Date Day,12
+Age,17
+Y.,
+M.,-
+D.,-
+Native of,Not known
+Occupation,In Reformatory
+Gender,Male
+Race,Colored
+Marital Status,Single
+Number of children living,
+Husband of,
+Wife of,
+Father's Name,John Anderson
+Mother's Name,Amanda Ballard Anderson
+Cause of Death Primary,Consumption after Malaria
+How long sick,20 weeks
+Cause of Death Immediate,Heart failure
+Accident Suicide Homicide,
+Reported by,John Lawrence M.D.
+Address,Cheltenham Md.

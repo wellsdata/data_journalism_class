@@ -1,0 +1,31 @@
+Fields,Results
+Name in Full,Waller James
+Died at Town,House of R. Chellenbou
+Died at County,Pr. Dis
+Date of death Year,1909
+Date of death Month,Apne
+Date of death Day,16
+Age Years,13
+Age Months,
+Age Days,
+Sex,Male
+Color or Race,Colored
+Birthplace,Md
+Occupation,Inmate
+Where Residing if not at place of death,
+Married Single or Widowed,Single
+Name of Wifa or Husband,None
+Father's Name,Edward James
+Father's Birthplace,Md
+Mother's Maiden Name,Roudu James
+Mother's Birthplace,Md
+Name of person giving Information,John B. Pylers
+How related to deceased,Supt
+Primary Cause of Death,Pneumonia
+How long (Primary Cause),6 days
+Immediate Cause of Death,Asthma
+How long (Immediate Cause),1 day
+Are the name, age, sex, color, date and place correctly given above ?,Yes
+Signature of Physician,W. H. Gibbons
+Address,Croom Md
+Accident or Suicide,

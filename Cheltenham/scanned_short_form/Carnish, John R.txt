@@ -1,0 +1,32 @@
+Fields,Results
+Name in Full,John R Carnish
+Died at,House of Reformatory
+Town,P. G.
+County,
+Date of death (Year),1907
+Month,Sept
+Day,4
+Age (Years),13
+Age (Months),
+Age (Days),
+Sex,Male
+Color or Race,Colored
+Birthplace,Baltimore Md
+Occupation,Inmate
+Where Residing if not at place of death,
+Married, Single or Widowed,Single
+Name of Wife or Husband,
+Father's Name,Unknown
+Father's Birthplace,Unknown
+Mother's Maiden Name,Unknown
+Mother's Birthplace,Unknown
+Name of person giving Information,J. B. Pyles Supt
+How related to deceased,None
+Primary (Causes of Death),Tuberculosis
+How long (Primary),2 years
+Immediate (Causes of Death),
+How long (Immediate),
+Are the name, age, sex, color, date and place correctly given above?,
+Signature of Physician,W. E. Hibbons
+Address,Crown Md
+Accident or Suicide?,?

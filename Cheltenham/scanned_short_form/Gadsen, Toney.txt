@@ -1,0 +1,32 @@
+Fields,Results
+Name in Full,Joney Gadsden
+Died at - Town,Charleston
+Died at - County,Pr. Gas
+Date of death - Year,1908
+Date of death - Month,Oct
+Date of death - Day,22
+Age - Years,12
+Age - Months,
+Age - Days,
+State,Maryland
+Sex,Male
+Color or Race,Colored
+Birthplace,S.C.
+Occupation,Inmate
+Where Residing if not at place of death,
+Married, Single or Widowed,Single
+Name of Wife or Husband,
+Father's Name,Joney Gadsden
+Father's Birthplace,S.C.
+Mother's Maiden Name,Caroline
+Mother's Birthplace,S.C.
+Name of person giving Information,John B. Pyne, Supt. Home of Reformation
+How related to deceased,None
+Primary Cause of Death,Tuberculosis
+How long (Primary Cause),10 months
+Immediate Cause of Death,Asthenia
+How long (Immediate Cause),
+Are the name, age, sex, color, date and place correctly given above?,
+Accident or Suicide?,
+Signature of Physician,W. J. Gibbons
+Address,Crown Md

@@ -1,0 +1,22 @@
+Fields,Results
+Name in Full,Hugh Pinchett
+Died at Town,Cheltenham House Reformation
+County,P.G. Co.
+Date 189,8
+Month,Dec
+Day,1
+Age,15
+Native of,Md
+Occupation,Inmate
+Male/Female,Male
+White/Colored,White
+Married/Single,Single
+Number of children living,152a
+Father's Name,Hugh Pinchett
+Mother's Name,Mariah Shields
+Cause of Primary,Wound of groin by hog
+How long sick,15 minutes
+Death Immediate,Hemorrhage
+Accident, Suicide, Homicide,Accident
+Reported by,Dr. W.H. Gibbons
+Address,Lerom Md

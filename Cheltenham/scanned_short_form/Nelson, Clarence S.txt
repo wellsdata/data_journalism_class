@@ -1,0 +1,24 @@
+Fields,Results
+Certificate of Death,5-
+Name in Full,Clarence S. Nelson
+Died at Town,Cheltenham
+Died at County,Prince George Co
+Died at State,MARYLAND
+Date 1900 Month,May
+Date 1900 Day,2
+Age,15
+Native of,Maryland
+Occupation,Car Shop
+Marital Status,Single
+Number of children living,
+Husband of,
+Wife of,
+Father's Name,Joshua Nelson
+Mother's Name,Lizzie Nelson
+Cause of Primary,Typhoid Fever
+How long sick,26 days
+Death Immediate,Heart Failure
+Accident, Suicide, Homicide,
+Reported by,Jno Lawrence M.D.
+Address,Lisbon, Howard Co. Maryland
+Signed by physician, if any in attendance, otherwise by coroner, undertaker or minister,John Lawrence M.D.

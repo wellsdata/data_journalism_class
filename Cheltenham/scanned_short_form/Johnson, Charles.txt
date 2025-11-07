@@ -1,0 +1,23 @@
+Fields,Results
+Name in Full,Charles Johnson
+Died at Town,Cheltenham
+Died at County,Prince Georges
+Died at State,MARYLAND
+Date Year,1898
+Date Month,July
+Date Day,8
+Age,19
+Y. M. D. Year,
+Y. M. D. Month,-
+Y. M. D. Day,-
+Native of,Maryland
+Occupation,Prisoner
+Colored,Colored
+Single,Single
+Father's Name,Perry H. Johnson
+Mother's Name,Annie Tubman
+Cause of Death Primary,Phthisis Pulmonalis
+How long sick,1 year
+Cause of Death Immediate,Exhaustion
+Reported by,Leo M. Selling M. D.
+Address,House of Reformation Cheltenham Md.

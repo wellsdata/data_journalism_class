@@ -1,0 +1,32 @@
+Fields,Results
+Name In Full,Percy Coleman
+Died at Town,Chutteleur House of R.
+Died at County,P.G.
+Date of death Year,1908
+Date of death Month,Apue
+Date of death Day,14
+Age Years,11
+Age Months,8
+Age Days,
+Sex,Male
+Color or Race,Colored
+Birthplace,Balto md
+Occupation,Inmate
+Where Residing if not at place of death,
+Married, Single or Widowed,Single
+Name of Wife or Husband,
+Father's Name,Will Coleman
+Father's Birthplace,Balto md
+Mother's Maiden Name,Addie Seate
+Mother's Birthplace,//
+Name of person giving Information,R. Roper
+How related to deceased,None
+Causes of Death (Primary),Encephalitis
+Causes of Death (Immediate),
+How long (Primary cause),1 week
+How long (Immediate cause),
+Are the name, age, sex, color, date and place correctly given above?,Yes
+Signature of Physician,W.W. Gibbons
+Address,Croom Md
+Accident or Suicide?,
+Registration Number,60

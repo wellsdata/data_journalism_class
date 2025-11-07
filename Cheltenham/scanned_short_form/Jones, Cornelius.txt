@@ -1,0 +1,32 @@
+Fields,Results
+Name in Full,Cornelius Jones
+Died at Town,Chillum
+Died at County,Pr Geo
+Date of death 190,9
+Month,Oct
+Day,11
+Age Years,14
+Age Months,
+Age Days,
+Sex,Male
+Color or Race,Colored
+Birthplace,Balto Md
+Occupation,Inmate House of Reformation
+Where Residing if not at place of death,Chillum Md
+Married, Single or Widowed,Single
+Name of Wife or Husband,None
+Father's Name,John W Jones
+Father's Birthplace,Md
+Mother's Maiden Name,Florence Dyes
+Mother's Birthplace,"
+Name of person giving Information,Reuben F. Dopsen Supt. H.R.
+How related to deceased,None
+Primary,Peritonitis, Chronic
+How long (for Primary),6 weeks
+Immediate,Asthenia
+How long (for Immediate),2 days
+Are the name, age, sex, color, date and place correctly given above ?,
+Signature of Physician,Ed H. Gibbons
+Address,Croom Md
+Accident or Suicide,
+Circled Number,116

@@ -1,0 +1,32 @@
+Fields,Results
+Name in Full,Dannie J. Ibles
+Diad at (Town),House of Refomation, Chestertown
+Diad at (County),Pr Geo
+Date of death (Year),1909
+Date of death (Month),May
+Date of death (Day),28
+Age (Years),14
+Age (Months),
+Age (Days),
+Sex,Male
+Color or Race,Colored
+Birthplace,Florida
+Occupation,Inmate
+Where Residing if not at place of death,
+Married, Single or Widowed,Single
+Name of Wife or Husband,
+Father's Name,Millidue Ibles
+Father's Birthplace,Florida
+Mother's Maiden Name,Furrella Mugate
+Mother's Birthplace,Florida
+Name of person giving Information,John B. Pyles Supt
+How related to deceased,None
+CAUSES OF DEATH (circled number),27
+Primary (Cause of Death),Tuberculosis
+How long (for Primary),2 years
+Immediate (Cause of Death),Asthma
+How long (for Immediate),
+Are the name, age, sex, color, date and place correctly given above?,Yes
+Signature of Physician,W. S. Gibbons
+Address,Croom Md
+Accident or Suicide,

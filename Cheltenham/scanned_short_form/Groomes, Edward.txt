@@ -1,0 +1,30 @@
+Fields,Results
+Name in Full,Edward Groomes
+Died at Town,Cheltenham
+Died at County,P.G.
+Date of death | 190,7
+Date of death | Month,Oct
+Date of death | Day,2
+Age | Years,13
+Age | Months,
+Age | Days,
+Sex,Male
+Color or Race,Colored
+Birthplace,Md
+Occupation,Inmate
+Where Residing if not at place of death,
+Married, Single or Widowed,Single
+Name of Wife or Husband,
+Father's Name,Frank Groomes
+Father's Birthplace,Md
+Mother's Maiden Name,Unknown
+Mother's Birthplace,Unknown
+Name of person giving In formation,R. Asper
+How related to deceased,Asst Supt
+Primary (Cause of Death),Tuberculosis
+How long (Primary),Some time
+Immediate (Cause of Death),Hemorrhage
+How long (Immediate),Short time
+Are the name, age, sex, color, date and place correctly given above?,Yes
+Signature of Physician,W.H. Gibbons
+Address,Crome Md

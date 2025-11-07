@@ -1,0 +1,21 @@
+Fields,Results
+Name in Full,James Henry Johnson
+Died at Town,Cheltenham
+Died at County,P. George
+Died at State,MARYLAND
+Date 189_ Month,Jan.
+Date 189_ Day,16
+Age,15
+Male,X
+White,X
+Single,X
+Native of,Maryland
+Occupation,factory
+Number of children living,0
+Father's Name,Frank Johnson
+Mother's Name,Not known
+Cause of Death Primary,Phthisis 229
+How long sick,Several months
+Cause of Death Immediate,Heart failure
+Reported by,P.B. Hester M.D.
+Address,Cheltenham Md.

@@ -1,0 +1,33 @@
+Fields,Results
+CERTIFICATE OF DEATH State,MARYLAND
+Name In Full,Harrison Smith
+Died at Town,Cheltenham
+Died at County,Pr. Geo.
+Date of death Year,1908
+Date of death Month,April
+Date of death Day,18
+Age Years,15
+Age Months,6
+Age Days,
+Sex,Male
+Color or Race,Colored
+Birthplace,Md
+Occupation,Inmate
+Where Residing if not at place of death,House of Reformation Cheltenham Md
+Married, Single or Widowed,Single
+Name of Wife or Husband,
+Father's Name,Frank Smith
+Father's Birthplace,Md
+Mother's Maiden Name,Unknown
+Mother's Birthplace,Unknown
+Name of person giving Information,John B. Pyles
+How related to deceased,Sup't
+Causes of Death Primary,Pulmonary Tuberculosis
+Causes of Death Primary How long,Unknown
+Causes of Death Immediate,
+Causes of Death Immediate How long,
+Are the name, age, sex, color, date and place correctly given above?,yes
+Signature of Physician,W. H. Gibbons
+Address,Croom Md.
+Accident or Suicide?,
+Certificate Number (circled),27

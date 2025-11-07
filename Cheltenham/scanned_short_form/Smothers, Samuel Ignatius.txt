@@ -1,0 +1,27 @@
+Fields,Results
+Certificate Type,Certificate of Death
+Name in Full,Samuel Ignatius Smothers
+Died at - Town,Chettenham
+Died at - County,Prince George Co.
+Died at - State,MARYLAND
+Date - Year,1901
+Date - Month,Mar.
+Date - Day,17.
+Age - Years,19
+Age - Months,11
+Age - Days,19
+Native of,Frederick, Md.
+Occupation,Laundry boy.
+Sex,Male
+Race,Colored
+Marital Status,Single
+Husband,not
+Wife,
+Father's Name,Elias Smothers
+Mother's Name,Eliza Brown
+Cause of Death - Primary,Pneumonia
+Cause of Death - Immediate,Heart failure
+How long sick,6 days
+Accident, Suicide, Homicide,
+Reported by,John Lawrence M.D.
+Address,Chettenham, Prince George Co, Md.

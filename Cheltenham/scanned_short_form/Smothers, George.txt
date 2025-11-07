@@ -1,0 +1,21 @@
+Fields,Results
+Name in Full,George Smathers
+Town,Cheltenham
+County,Pr. Geo Co
+Died at,House of Reformation
+Date Year,1898
+Month,8
+Day,30
+Age,16
+Native of,Md
+Occupation,Inmate
+Sex,Male
+Race,White
+Marital Status,Single
+Father's Name,Y.W. Marris
+Mother's Name,Elizabeth Smathers
+Cause of Death Primary,Typhoid fever
+How long sick,about 4 or 5 weeks
+Cause of Death Immediate,Exhaustion & delirium
+Reported by,W.S. Hibbons M.D.
+Address,Croom Md Pr. Geo Co

@@ -1,0 +1,31 @@
+Fields,Results
+Name in Full,Joba McKinstry
+Died at Town,Chelten ham
+Died at County,Prince George
+Date of death Year,1906
+Date of death Month,October
+Date of death Day,14
+Age Years,16
+Age Months,
+Age Days,
+Sex,Male
+Color or Race,Black
+Birthplace,Alabama
+Occupation,Inmate of H.J.R.
+Where Residing if not at place of death,House of Reformation
+Married, Single or Widowed,Single
+Name of Wife or Husband,
+Father's Name,Louis McKinstry
+Father's Birthplace,Alabama
+Mother's Maiden Name,Savilla McKinstry
+Mother's Birthplace,Alabama
+Name of person giving Information,John B. Pyles, Sup't.
+How related to deceased,.
+Primary cause of death,Tuberculosis
+How long (Primary cause of death),
+Immediate cause of death,
+How long (Immediate cause of death),
+Are the name,age,sex,color,date and place correctly given above?,
+Signature of Physician,W. A. Gibbons
+Physician Address,Crown Md
+Accident or Suicide?,.

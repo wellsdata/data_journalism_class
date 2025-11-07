@@ -1,0 +1,31 @@
+Fields,Results
+Name in Full,Hermon Wilson alias Hebb
+Died at - Town,Chetteuchan
+Died at - County,Pr. Go
+Date of death - Year,1904
+Date of death - Month,Sept
+Date of death - Day,15
+Age - Years,18
+Age - Months,
+Age - Days,
+Sex,Female
+Color or Race,Black
+Birthplace,Baltimore Md
+Occupation,Inmate
+Where Residing if not at place of death,
+Married, Single or Widowed,Single
+Name of Wife or Husband,
+Father's Name,Thomas Hebb
+Father's Birthplace,Md
+Mother's Maiden Name,Emily Neuman
+Mother's Birthplace,Md
+Name of person giving Information,Rubert Doper
+How related to deceased,Superintendent
+Primary Cause of Death,Thrasasm as was
+How long (Primary Cause),1 hour
+Immediate Cause of Death,Sudden
+How long (Immediate Cause),
+Are the name, age, sex, color, date and place correctly given above?,
+Signature of Physician,W. H. Gibbons
+Address,Crome Md
+Accident or Suicide?,

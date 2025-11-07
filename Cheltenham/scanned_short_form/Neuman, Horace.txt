@@ -1,0 +1,24 @@
+Fields,Results
+Name in Full,Horace Heuman
+Died at - Town,Cheltenham
+Died at - H of R,H of R
+Died at - County,Prince Geo. Co.
+State,MARYLAND
+Date 1903 - Month,11
+Date 1903 - Day,15
+Age,16
+Native of,Baltimore
+Occupation,
+Gender,Female
+Race,
+Marital Status,
+Number of children living,
+Husband of (marked with X),X
+Father's Name,Moses Heuman
+Mother's Maiden Name,Francis Lawson-Heuman
+Cause of Death - Primary,Acute Parenchymatous Nephritis
+Cause of Death - How long sick,35 days
+Cause of Death - Immediate,Quasarca
+Cause of Death - Accident, Suicide, Homicide,
+Reported by,T.T. Seurle M.D.
+Address,Cheltenham, Prince Geo Co. Md.

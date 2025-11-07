@@ -1,0 +1,22 @@
+Fields,Results
+Name in Full,Henry J. Wilson
+Died at (Town),Cheltenham Reformatory
+Died at (County),Prince Georges
+Died at (State),MARYLAND
+Date (Year),1901
+Date (Month),Dec.
+Date (Day),31
+Age,13-10
+Native of,Balto. Md
+Occupation,House of Reformation
+Sex,Male
+Color,Colored
+Marital Status,Single
+Father's Name,Chas. T. Wilson
+Mother's Maiden Name,Mary C. Garrett
+Cause of Death (Primary),Spinal Meningitis
+How long sick,two months
+Cause of Death (Immediate),Heart failure
+Accident, Suicide, Homicide,
+Reported by,W. S. Gibbons M.D.
+Address,Croom Md

@@ -1,0 +1,23 @@
+Fields,Results
+Name in Full,Samuel R. Brown
+Died at Town,Cheltenham
+Died at County,Prince George
+Date Y,1901
+Date Month,July
+Date Day,29
+Age Y,13
+Age M,2
+Age D,0
+Native of,Baltimore
+Occupation,In Shoe-shop at Reformatory
+State,MARYLAND
+Gender,Male
+Race,White
+Marital Status,Single
+Father's Name,Harry Brown
+Mother's Name,Mary Carroll Brown
+Cause of Death Primary,Asthma & Phthisis
+How long sick,54 days
+Cause of Death Immediate,Cardiac Failure
+Reported by,R. L. Cochran M.D.
+Address,Cheltenham Md.

@@ -1,0 +1,31 @@
+Fields,Results
+Name in Full,Richard Maurice Green
+Town,Cheltenham House of Reformation
+County,P.G.
+Date of death Year,1906
+Date of death Month,May
+Date of death Day,11
+Age Years,19
+Age Months,
+Age Days,
+Sex,Male
+Color or Race,Colored
+Birthplace,Md
+Occupation,Inmate
+Where Residing if not at place of death,
+Married, Single or Widowed,Single
+Name of Wife or Husband,
+Father's Name,Harry Green
+Father's Birthplace,Md
+Mother's Maiden Name,Clara Johnson
+Mother's Birthplace,Md
+Name of person giving Information,J.B. Pyles
+How related to deceased,none
+Primary Cause of Death,Consumption
+How long (Primary Cause),
+Immediate Cause of Death,Asthenia
+How long (Immediate Cause),
+Are the name,age,sex,color,date and place correctly given above?,yes
+Signature of Physician,W.S. Gibbons
+Address,Craam Md
+Accident or Suicide?,

@@ -1,0 +1,28 @@
+Fields,Results
+Name in Full,James Brown
+Died at - Town,House of Reformation
+Died at - County,P.G.
+Date of death - Year,1905
+Date of death - Month,Jan
+Date of death - Day,29
+Age - Years,19
+Sex,Male
+Color or Race,Yellow
+Occupation,Inmate
+Where Residing if not at place of death,House Reformation
+Married, Single or Widowed,Single
+Name of Wife or Husband,
+Father's Name,John W. Brown
+Father's Birthplace,
+Mother's Maiden Name,
+Mother's Birthplace,
+Name of person giving Information,John B. Pyles Supt
+How related to deceased,None
+Primary Cause of Death,Phthisis
+How long (Primary Cause),5 years
+Immediate Cause of Death,Asthma
+How long (Immediate Cause),
+Are the name, age, sex, color, date and place correctly given above?,Yes
+Signature of Physician,W. H. Gibbons
+Address (Physician),Croom Md
+Accident or Suicide?,

@@ -1,0 +1,29 @@
+Fields,Results
+Certificate of Death Number,(#1890)
+Name in Full,Eugene Ware
+Died at Town,Cheltenham
+Died at County,Prince George Co
+State,MARYLAND
+Date of Death Year,1901
+Date of Death Month,April
+Date of Death Day,22
+Age Years,18
+Age Months,-
+Age Days,-
+Native of,Baltimore
+Occupation,Chair Factory
+Sex,Male
+Race,White
+Marital Status,Single
+Husband,
+Wife,
+Number of children living,
+Father's Name,
+Mother's Name,
+Primary Cause of Death,"Don't know, Stomack inflama + lungs congested"
+How long sick (Primary Cause),one day
+Immediate Cause of Death,Heart Failure
+Immediate Cause of Death Number,104
+Accident, Suicide, Homicide,
+Reported by,John Lawrence Md
+Address,Cheltenham Md.

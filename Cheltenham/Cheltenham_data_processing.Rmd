@@ -250,3 +250,114 @@ for(i in 1:nrow(newspapers)) {
 notes
 https://claude.ai/share/4a95465e-7b00-4d8b-b71d-32fae4dfc9bf
 
+# Compile Scraped Data into a DF
+
+```{r}
+# Load required libraries
+library(readr)
+library(writexl)
+
+# Set the folder path
+folder_path <- "/Users/gizmofo/Code/data_journalism_class/Cheltenham/scanned_short_form"
+
+# Get list of all text files in the folder
+text_files <- list.files(folder_path, pattern = "\\.txt$", full.names = TRUE)
+
+# Create an empty list to store data frames
+sheets_list <- list()
+
+# Read each text file and add to the list
+for (file in text_files) {
+  # Get the file name without path and extension for the sheet name
+  sheet_name <- tools::file_path_sans_ext(basename(file))
+  
+  # Truncate sheet name to 31 characters (Excel limit)
+  sheet_name <- substr(sheet_name, 1, 31)
+  
+  # Read the text file
+  # If files have structured data (CSV-like), use read_delim or read_csv
+  # For plain text, we'll read line by line
+  content <- read_lines(file)
+  
+  # Convert to data frame
+  df <- data.frame(Content = content, stringsAsFactors = FALSE)
+  
+  # Add to list with sheet name
+  sheets_list[[sheet_name]] <- df
+}
+
+# Write all sheets to Excel file
+output_file <- file.path(folder_path, "compiled_texts.xlsx")
+write_xlsx(sheets_list, output_file)
+
+cat("Excel file created successfully at:", output_file, "\n")
+cat("Number of sheets:", length(sheets_list), "\n")
+
+
+
+```
+
+```{r}
+# Load required libraries
+library(readr)
+library(writexl)
+
+# Set the folder path
+folder_path <- "/Users/gizmofo/Code/data_journalism_class/Cheltenham/scanned_short_form"
+
+# Get list of all text files in the folder
+text_files <- list.files(folder_path, pattern = "\\.txt$", full.names = TRUE)
+
+# Create an empty list to store data frames
+sheets_list <- list()
+
+# Read each text file and add to the list
+for (file in text_files) {
+  # Get the file name without path and extension for the sheet name
+  sheet_name <- tools::file_path_sans_ext(basename(file))
+  
+  # Truncate sheet name to 31 characters (Excel limit)
+  sheet_name <- substr(sheet_name, 1, 31)
+  
+  # Read the text file
+  content <- read_lines(file)
+  
+  # Split each line into fields and results by comma
+  fields <- character()
+  results <- character()
+  
+  for (line in content) {
+    # Split by comma
+    parts <- strsplit(line, ",", fixed = TRUE)[[1]]
+    
+    # Handle cases where there might be more than 2 parts
+    if (length(parts) >= 2) {
+      fields <- c(fields, trimws(parts[1]))
+      # Join remaining parts in case there are commas in the result
+      results <- c(results, trimws(paste(parts[-1], collapse = ",")))
+    } else if (length(parts) == 1) {
+      # If no comma, treat whole line as field with empty result
+      fields <- c(fields, trimws(parts[1]))
+      results <- c(results, "")
+    }
+  }
+  
+  # Convert to data frame with two columns
+  df <- data.frame(
+    Field = fields,
+    Result = results,
+    stringsAsFactors = FALSE
+  )
+  
+  # Add to list with sheet name
+  sheets_list[[sheet_name]] <- df
+}
+
+# Write all sheets to Excel file
+output_file <- file.path(folder_path, "compiled_texts.xlsx")
+write_xlsx(sheets_list, output_file)
+
+cat("Excel file created successfully at:", output_file, "\n")
+cat("Number of sheets:", length(sheets_list), "\n")
+```
+

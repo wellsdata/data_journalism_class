@@ -1,0 +1,20 @@
+Fields,Results
+Name in Full,Clarence C. Hill
+Died at Town,Cheltenham
+Died at County,Prince Geo.
+Died at State,MARYLAND
+Date Year,1899
+Date Month,8
+Date Day,26
+Age,19
+Native of,Md
+Occupation,Factory
+Gender,Female
+Marital Status,Single
+Father's Name,Thos. Hill
+Mother's Name,Sally Jones Hill
+Cause of Death Primary,Phthisis
+How long sick,6 months
+Cause of Death Immediate,Asphyxia
+Reported by,B. Foster M.D.
+Address,Cheltenham Md.

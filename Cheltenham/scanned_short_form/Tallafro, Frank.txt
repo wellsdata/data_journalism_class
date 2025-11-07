@@ -1,0 +1,29 @@
+Fields,Results
+Certificate of Death #,2244
+Name in Full,Frank Tallaforo
+Died at Town,Chellinham
+Died at County,Prince George Co
+Died at State,MARYLAND
+Date Year,1901
+Date Month,May
+Date Day,6
+Age Years,15
+Age Months,8
+Age Days,
+Native of,Harford Co
+Occupation,None
+Sex,Male
+Race,
+Marital Status,
+Husband of,
+Wife of,
+Father's Name,Solomon Tallaforo
+Mother's Name,Amanda Tallaforo
+Cause of Death Primary,Consumption
+How long sick (Primary Cause Days),27
+How long sick (Overall Duration),49 days {last spell}
+Cause of Death Immediate,Heart Failure
+Accident, Suicide, Homicide,
+Reported by,John Lawrence M.D.
+Address Town,Chellinham
+Address State,Md

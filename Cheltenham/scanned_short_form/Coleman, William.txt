@@ -1,0 +1,23 @@
+Fields,Results
+Name in Full,William Coleman
+Town,Chelltenham
+County,Prince Georr
+Year,1901
+Month,Jany
+Day,9th
+Age,12
+Native of,Md.
+Occupation,Canning Chairs
+Sex,Male
+Color,White
+Marital Status,
+Father's Name,Henry Scott
+Mother's Name,Lillie Coleman
+Cause of Death - Primary,General Tuberculosis
+How long sick (Primary),324
+Cause of Death - Immediate,Exhaustion
+Reported by,John Lawrence
+Reported by (additional),Bn 10
+Address,Bold House of Reform
+Address (City),Chellinham
+Address (State),Md

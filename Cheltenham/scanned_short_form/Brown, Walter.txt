@@ -1,0 +1,27 @@
+Fields,Results
+State,MARYLAND
+Name in Full,Walter Brown
+Died at Town,Chellinham
+Died at County,Prince George Co
+Date Year,1901
+Date Month,Jany.
+Date Day,6
+Age Y,17
+Age M,-
+Age D,-
+Native of,Centerville, Md.
+Occupation,Caning Chairs
+Gender,Male
+Race,White
+Marital Status,Single
+Number of children living,
+Husband of,
+Wife of,
+Father's Name,George W. Brown
+Mother's Name,Eliza Brown
+Cause of Death Primary,Consumption & Pneumonia
+Cause of Death Immediate,Heart failure
+How long sick,2 >
+Accident, Suicide, Homicide,
+Reported by,John Lawrence M.D.
+Address,House of Reformation, Chellinham, Md.

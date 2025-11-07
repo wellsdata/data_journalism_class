@@ -1,0 +1,23 @@
+Fields,Results
+Name in Full,Daniel Cobert
+Died at Town,Cheltenham
+Died at County,Prince Geo.
+Died at State,MARYLAND
+Date 189_ Month,8
+Date 189_ Day,18
+Age Y.,13
+Age M.,8
+Age D.,
+Native of,Md.
+Occupation,Factory
+Gender,Male
+Race,White
+Marital Status,Single
+Father's Name,Daniel Cobert
+Mother's Name,Margaret Cobert
+Cause of Death Primary,Phthisis
+Cause of Death Primary Duration/Details,22a
+How long sick,30 days
+Death Immediate,Exhaustion
+Reported by,B.B. Hester M.D.
+Address,Cheltenham

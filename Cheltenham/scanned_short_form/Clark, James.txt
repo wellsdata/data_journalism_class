@@ -1,0 +1,38 @@
+Fields,Results
+Certificate of Death #,1846
+Name in Full,James blark
+Died at Town,Cheltenham
+Died at County,Prince George Co
+State,
+Date Year,
+Date Month,April
+Date Day,17
+Age,17
+Age Y,-
+Age M,-
+Age D,-
+Native of,-
+Occupation,Chair factory
+Male,
+Female,
+White,
+Colored,
+Married,
+Single,
+Widow,
+Widower,
+Divorced,
+Number of children living,
+Husband of,
+Wife of,
+Father's Name,James blark
+Mother's Name,Maggie
+Cause of Death Primary,Pneumonia
+How long sick (Primary),93
+Cause of Death Immediate,Heart failure
+How long sick (Immediate),1 day in hospital
+Accident,
+Suicide,
+Homicide,
+Reported by,John Lawrence M.D.
+Address,Cheltenham Md.

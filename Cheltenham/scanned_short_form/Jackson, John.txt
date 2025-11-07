@@ -1,0 +1,23 @@
+Fields,Results
+Name In Full,John Jackson
+Town,Chelltenham
+County,Prince George's
+Died at,MARYLAND
+Date Y,1901
+Date Month,Nov
+Date Day,28
+Age Y,21
+Age M,--
+Age D,--
+Native of,Maryland
+Occupation,House of Reformation
+Sex,Male
+Color,Colored
+Marital Status,Single
+Father's Name,Thos Jackson
+Mother's Name,Margaret Jackson
+Cause of Death Primary,Phthisis
+How long sick,one year
+Death Immediate,Heart failure
+Reported by,R. S. Cochrans M.D.
+Address,Chelltenham Prince George Co. Md.
