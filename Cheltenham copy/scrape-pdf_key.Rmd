@@ -1,5 +1,5 @@
 ---
-title: "Cheltenham PDF and processing"
+title: "KEY_Cheltenham PDF and processing"
 author: "Rob Wells"
 date: "2025-09-25"
 output: html_document
@@ -8,6 +8,7 @@ output: html_document
 
 ```{r}
 #install.packages("pdftools")
+
 library(tidyverse)
 library(pdftools)
 library(dplyr)
@@ -22,6 +23,11 @@ I created a pdf from this website of the results on Sept. 25, 2025  and extracte
 https://www.findagrave.com/cemetery/2454348/memorial-search?firstname=&middlename=&lastname=&cemeteryName=Boy%27s+Village+of+Maryland+Cemetery&birthyear=&birthyearfilter=&deathyear=&deathyearfilter=&bio=&linkedToName=&plot=&memorialid=&mcid=&datefilter=&orderby=n&page=1#sr-250171171 
 
 
+I created a second pdf from this website on Nov. 8, 2025
+https://www.findagrave.com/virtual-cemetery/2005789?page=1#sr-157481048
+
+
+
 ## Convert PDF to text
 ```{r}
 #Using pdftools package. Good for basic PDF extraction
@@ -31,6 +37,17 @@ text <- pdf_text("/Users/gizmofo/Code/data_journalism_class/Cheltenham/Find_a_Gr
 writeLines(text, "graves.txt")
 #writeLines writes this text to a text file
 ```
+
+
+```{r}
+text <- pdf_text("/Users/gizmofo/Library/CloudStorage/GoogleDrive-robwells@umd.edu/My Drive/Jour772_Data_Fall_2025/Cheltenham_Jour772/Jessup_update.pdf")
+#pdf_text reads the text from a PDF file.
+writeLines(text, "graves.txt")
+#writeLines writes this text to a text file
+
+```
+
+
 
 ###Convert text into DF and clean
 
@@ -49,7 +66,11 @@ index <- index |>
 
 simplified_df <- index |> 
   rename(name = index) |> 
-  mutate(name = str_replace_all(name, "  • No grave photo", ""))
+  mutate(name = str_replace_all(name, "  • No grave photo", ""),
+         name = str_replace_all(name, "No grave photo", ""),
+         name = str_replace_all(name, "Jessup, Anne Arundel County, Maryland, USA", ""),
+         name = str_replace_all(name, "Maryland House of Corrections Cemetery", ""),
+         name = str_replace_all(name, "", ""))
 ```
 
 ## Align the data
@@ -84,6 +105,52 @@ graves_df <- simplified_df %>%
 print(graves_df)
 ```
 
+
+
+
+```{r}
+# in r, i want to take the date entry, which is the next row after a name, and put it in to a new column called date on the same row as name. 
+
+# Assuming your dataframe is called 'df'
+# Create a new dataframe with names and dates properly aligned
+
+graves_df <- simplified_df %>%
+  # Remove empty rows
+  filter(!is.na(name) & name != "") %>%
+  # Create a helper column to identify if a row contains a date pattern
+  mutate(
+    is_date = grepl("\\d{1,4}\\s*(–|-)", name) | grepl("unknown", name),
+    row_num = row_number()
+  ) %>%
+  # Create the date column by looking at the next row for each name
+  mutate(
+    date = case_when(
+      !is_date & lead(is_date) ~ lead(name),  # If current row is name and next row is date
+      TRUE ~ NA_character_
+    )
+  ) %>%
+  # Keep only the name rows (not the date rows)
+  filter(!is_date) %>%
+  # Clean up
+  select(name, date) %>%
+  # Remove any remaining rows where name or date is missing
+  filter(!is.na(date))
+
+print(graves_df)
+```
+
+# Further Clean Names
+```{r}
+graves_df <- graves_df |> 
+  mutate(name = str_remove_all(name, "\\d+")) |> 
+  mutate(name = str_remove_all(name, "")) |>  
+  mutate(name = str_remove_all(name, "…")) |> 
+  mutate(name = str_squish(name))
+
+```
+
+
+
 ### Create birth and death columns
 ```{r}
 graves_df1 <- separate(data = graves_df, 
@@ -101,10 +168,11 @@ graves_df1 <- separate(data = graves_df,
 graves_df1 <- graves_df1 |> 
   mutate(birth_year = as.numeric(str_extract(birth_date,"\\d{4}" )),
          death_year = as.numeric(str_extract(death_date,"\\d{4}$" ))) |> 
-  mutate(approx_age = (death_year-birth_year))
+  mutate(approx_age = (death_year-birth_year)) |> 
+  arrange(death_year)
 
-write.csv(graves_df1, "cheltenham_deaths_9_25_2025.csv")
-
+#write.csv(graves_df1, "cheltenham_deaths_9_25_2025.csv")
+write.csv(graves_df1, "jessup_deaths_11_8_2025.csv")
 ```
 
 
